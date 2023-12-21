@@ -11,4 +11,4 @@ $(document).ready(function() {
     $(document).on('change', '#parentRadio', function() {
       $('#parentEmailGroup').hide();
     });
-});
+  });
