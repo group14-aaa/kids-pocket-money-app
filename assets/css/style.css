@@ -71,20 +71,6 @@ h3 {
 }
 
 /* Navigation styles */
-.nav-container {
-  background-color: var(--bg-darkgrey);
-}
-
-.navLinks {
-  color: var(--bg-lightblue) !important;
-  border-bottom: 3px solid var(--bg-lightblue);
-}
-
-.navLinks:hover {
-  background-color: var(--bg-lightblue);
-  color: var(--bg-darkgrey) !important;
-}
-
 .navbar {
   background-color: #007bff;
 }
@@ -94,12 +80,21 @@ h3 {
   font-weight: bold;
 }
 
+.navbar-brand:hover {
+  color: var(--bg-darkgrey);
+  font-weight: bold;
+}
+
 .navbar-nav .nav-link {
-  color: var(--bg-light);
+  padding: 10px;
+  margin: 5px;
+  color: var(--bg-light) !important;
+  border: none;
 }
 
 .navbar-nav .nav-link:hover {
-  color: var(--bg-darkgrey);
+  background-color: var(--bg-lightblue);
+  color: var(--bg-darkgrey) !important;
 }
 
 .navbar-toggler-icon {
