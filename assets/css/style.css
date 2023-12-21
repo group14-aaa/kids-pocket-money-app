@@ -1,27 +1,130 @@
 /* style.css */
-.body {
-    padding: 0;
-    margin: 0;
-   font-family:'Times New Roman', Times, serif;
-   
+:root {
+  --bg-darkgrey: #333;
+  --bg-lightblue: #add8e6;
+  --bg-light: #fff;
+}
+
+/* Reset styles for body */
+body {
+  padding: 0;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f8f9fa;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Shared styles for forms and containers */
+.form-container {
+  width: 600px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.task-form-container {
+  width: 100%;
+}
+.form-container,
+.task-form-container {
+  margin: 25px auto;
+  background-color: var(--bg-light);
+  padding: 25px;
+
 }
 
 .container {
-color: rgb(64, 0, 255);
+  max-width: 800px;
+  margin: 40px auto;
+  background-color: var(--bg-light);
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
 }
 
+/* Text styles */
+p {
+  color: #495057;
+}
 
+h2 {
+  color: #007bff;
+}
 
+/* Button styles */
+.btn-primary {
+  background-color: #007bff;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+}
+
+/* Navigation styles */
 .nav-container {
-    background-color: var(--bg-darkgrey);
-  }
+  background-color: var(--bg-darkgrey);
+}
 
-  .navLinks {
-    color: var(--bg-lightblue)!important;
-    border-bottom: 3px solid var(--bg-lightblue);
-  }
+.navLinks {
+  color: var(--bg-lightblue) !important;
+  border-bottom: 3px solid var(--bg-lightblue);
+}
 
-  .navLinks:hover {
-    background-color: var(--bg-lightblue);
-    color: var(--bg-darkgrey)!important;
+.navLinks:hover {
+  background-color: var(--bg-lightblue);
+  color: var(--bg-darkgrey) !important;
+}
+
+.navbar {
+  background-color: #007bff;
+}
+
+.navbar-brand {
+  color: var(--bg-light);
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  color: var(--bg-light);
+}
+
+.navbar-nav .nav-link:hover {
+  color: var(--bg-darkgrey);
+}
+
+.navbar-toggler-icon {
+  background-color: var(--bg-light);
+}
+
+/* Form styles */
+.form-check-input {
+  margin-right: 5px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Footer styles */
+footer {
+  margin-top: auto;
+  text-align: center;
+  padding: 10px 0;
+  color: var(--bg-light);
+  background-color: var(--bg-darkgrey);
+}
+
+footer span::before {
+  content: "\00a9";
+  margin-right: 5px;
+}
+
+footer span:hover {
+  text-decoration: underline;
 }
