@@ -9,7 +9,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Kids Pocket Money</title>
+    <title>Login</title>
   </head>
 
   <body>
@@ -19,7 +19,7 @@
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-xxl">
           <a class="navbar-brand m-2 ms-5" href="./">Kids Pocket Money</a>
-          <!-- Toggle button for mobile -->
+          <!--Toggle button for mobile-->
           <button
             class="navbar-toggler"
             type="button"
@@ -30,7 +30,7 @@
             aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <!-- Navigation menu -->
+          <!--Navigation menu-->
           <div
             class="collapse navbar-collapse justify-content-end align-center"
             id="main-nav">
@@ -49,10 +49,41 @@
 
     <!-- MAIN -->
     <main>
-      <div class="container">
-        <h2>Welcome to Kids Pocket Money</h2>
-        <p>Empower your kids with responsibilities and rewards!</p>
-        <a href="registration.html" class="btn btn-primary">Get Started</a>
+      <div class="form-container">
+        <h2>Login</h2>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="userType"
+            id="parentRadio"
+            checked />
+          <label class="form-check-label" for="parentRadio"> Parent </label>
+        </div>
+        <div class="form-check">
+          <input
+            class="form-check-input"
+            type="radio"
+            name="userType"
+            id="kidRadio" />
+          <label class="form-check-label" for="kidRadio"> Kid </label>
+        </div>
+        <form id="loginForm">
+          <!--Login form fields-->
+          <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email" required />
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              required />
+          </div>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </form>
       </div>
     </main>
 
@@ -61,7 +92,7 @@
       <span>2023 Kids Pocket Money App</span>
     </footer>
 
-    <!-- Scripts -->
+    <!--Scripts-->
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
