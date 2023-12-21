@@ -36,10 +36,23 @@
             id="main-nav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="login.html">Login</a>
+                <!-- Modal button to add new task -->
+                <button
+                  type="button"
+                  class="btn btn-primary nav-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#login">
+                  Login
+                </button>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="registration.html">Register</a>
+                <button
+                  type="button"
+                  class="btn btn-primary nav-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#register">
+                  Register
+                </button>
               </li>
             </ul>
           </div>
@@ -52,7 +65,160 @@
       <div class="container">
         <h2>Welcome to Kids Pocket Money</h2>
         <p>Empower your kids with responsibilities and rewards!</p>
-        <a href="registration.html" class="btn btn-primary">Get Started</a>
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#register">
+          Get Started
+        </button>
+      </div>
+      <!-- Modal to Login  -->
+      <div class="modal" id="login" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content m-0 p-0">
+            <div class="container m-0">
+              <h2>Login</h2>
+
+              <!-- Check boxes-->
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="userType"
+                  id="parentRadio"
+                  checked />
+                <label class="form-check-label" for="parentRadio">
+                  Parent
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="userType"
+                  id="kidRadio" />
+                <label class="form-check-label" for="kidRadio"> Kid </label>
+              </div>
+
+              <!--Login form fields-->
+              <form id="loginForm">
+                <div class="form-group">
+                  <label for="email">Email address:</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    required />
+                </div>
+
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    required />
+                </div>
+
+                <div class="modal-footer">
+                  <!-- Buttons -->
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Cancel
+                  </button>
+                  <button type="submit" class="btn btn-primary">Login</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal to Register  -->
+      <div class="modal" id="register" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content m-0 p-0">
+            <div class="container m-0">
+              <h2>Register</h2>
+
+              <!-- Check Boxes -->
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="userType"
+                  id="parentRadio"
+                  checked />
+                <label class="form-check-label" for="parentRadio">
+                  Parent
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="userType"
+                  id="kidRadio" />
+                <label class="form-check-label" for="kidRadio"> Kid </label>
+              </div>
+
+              <!-- Registration form fields -->
+              <form id="registrationForm">
+                <div class="form-group">
+                  <label for="email">Email address:</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="email"
+                    required />
+                </div>
+                <div class="form-group">
+                  <label for="password">Password:</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="password"
+                    required />
+                </div>
+                <div class="form-group">
+                  <label for="confirmPassword">Confirm Password:</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    id="confirmPassword"
+                    required />
+                </div>
+
+                <!-- Parent email field with required attribute -->
+                <div id="parentEmailGroup" class="form-group">
+                  <label for="parentEmail">Parent's Email address:</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="parentEmail"
+                    required />
+                </div>
+
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Cancel
+                  </button>
+                  <button type="submit" class="btn btn-primary">
+                    Register
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
       </div>
     </main>
 
@@ -62,11 +228,10 @@
     </footer>
 
     <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-      crossorigin="anonymous"></script>
-    <script src="./assets/js/scripts.js"></script>
+    <!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<script src="./assets/js/scripts.js"></script>
+
   </body>
 </html>
