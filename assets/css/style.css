@@ -9,3 +9,19 @@
 .container {
 color: rgb(64, 0, 255);
 }
+
+
+
+.nav-container {
+    background-color: var(--bg-darkgrey);
+  }
+
+  .navLinks {
+    color: var(--bg-lightblue)!important;
+    border-bottom: 3px solid var(--bg-lightblue);
+  }
+
+  .navLinks:hover {
+    background-color: var(--bg-lightblue);
+    color: var(--bg-darkgrey)!important;
+}
