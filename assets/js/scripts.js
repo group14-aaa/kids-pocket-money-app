@@ -25,6 +25,10 @@ function displayDate() {
     $("#display-Day").text(formattedTime);
   }, 1000);
 }
+   
+});
 
 
-  });
+
+
+
