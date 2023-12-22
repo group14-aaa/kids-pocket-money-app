@@ -70,7 +70,6 @@ $(document).ready(function () {
     }
   }
 
-
   // Load tasks to the page on initial page load
   loadTasksToPage();
 });
