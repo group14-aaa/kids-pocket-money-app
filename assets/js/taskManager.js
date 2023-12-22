@@ -1,54 +1,89 @@
-$(document).ready(function() {
-    const container = $('.container');
-    const taskNameInput = $('#task-name-input');
-    const taskDescriptionInput = $('#task-description-input');
-    const taskValueInput = $('#task-value-input');
+$(document).ready(function () {
+  const container = $('.container');
+  const taskNameInput = $('#task-name-input');
+  const taskDescriptionInput = $('#task-description-input');
+  const taskValueInput = $('#task-value-input');
 
-    // Event listener for submit button. Save values to local storage
-    container.on('click', '.task-submit-button', function() {
-        const currentTime = dayjs();
-        const enteredTask = {
-            name: taskNameInput.val(),
-            description: taskDescriptionInput.val(),
-            value: taskValueInput.val()
-        };
+  // Event listener for submit button. Save values to local storage
+  container.on('click', '.task-submit-button', function () {
+    const taskId = generateTaskId();
+    const currentTime = dayjs();
+    const enteredTask = {
+      id: taskId,
+      date: currentTime.format(), // Store date as part of the task
+      name: taskNameInput.val(),
+      description: taskDescriptionInput.val(),
+      value: taskValueInput.val()
+    };
 
-        saveTask(currentTime, enteredTask);
-        loadTasksToTable(currentTime);
-    });
+    saveTask(taskId, enteredTask);
+    loadTasksToPage();
+  });
 
+  // Generate a unique task ID
+  function generateTaskId() {
+    return 'task-' + Date.now();
+  }
 
-    //(key = currentTime, value = entered task values)
-    function saveTask(key, task) {
-        localStorage.setItem(key, JSON.stringify(task));
+  // (key = taskId, value = entered task values)
+  function saveTask(taskId, task) {
+    localStorage.setItem(taskId, JSON.stringify(task));
+  }
+
+  // Load tasks to the page using Bootstrap cards
+  function loadTasksToPage() {
+    const tasks = getTasksFromLocalStorage();
+    const taskCardContainer = $('#task-card-container');
+
+    // Clear existing cards
+    taskCardContainer.empty();
+
+    // Check if there are tasks available
+    if (tasks.length === 0) {
+      // Display a message when no tasks are available
+      const noTaskMessage = `
+          <div class="col-12 text-center mt-3">
+              <p>No tasks available</p>
+          </div>
+      `;
+      taskCardContainer.append(noTaskMessage);
+    } else {
+      // Sort tasks in reverse order (newest first)
+      tasks.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      // Loop to create Bootstrap cards for each task
+      tasks.forEach(function (task, i) {
+        // Check if task properties exist before displaying
+        const card = `
+              <div class="col-md-4 mb-4">
+                  <div class="card">
+                      <div class="card-body">
+                          <h5 class="card-title">${task.name || 'N/A'}</h5>
+                          <p class="card-text">${task.description || 'N/A'}</p>
+                          <p class="card-text">Value: £${task.value || 'N/A'}</p>
+                      </div>
+                  </div>
+              </div>
+          `;
+        taskCardContainer.append(card);
+      });
     }
+  }
+
+  // Load tasks to the page on initial page load
+  loadTasksToPage();
 });
 
 // Load tasks to the table in kids dashboard
+function getTasksFromLocalStorage() {
+  const tasks = [];
 
-function getTasksFromLocalStorage(key) {
-    return JSON.parse(localStorage.getItem(key)) || [];
+  // Iterate through all localStorage keys
+  for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    const task = JSON.parse(localStorage.getItem(key));
+    tasks.push(task);
+  }
 
-}
-
-function loadTasksToTable(currentTime) {
-  const tasks = getTasksFromLocalStorage(currentTime.format());
-  const tableBody = $('#task-table-body');
-
-  // Clear existing rows
-  tableBody.empty();
-
-  // loop Populate the table with tasks
-  tasks.forEach(function (task, i) {
-    const row = `
-      <tr>
-        <th scope="row">${[i] + 1}</th>
-        <td>${task.name}</td>
-        <td>${task.description}</td>
-        <td>£${task.value}</td>
-      </tr>
-    `;
-    tableBody.append(row);
-  });
- 
+  return tasks;
 }
