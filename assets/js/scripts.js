@@ -1,18 +1,18 @@
-$(document).ready(function() {
-    // Initial check on page load
-    $('#parentEmailGroup').toggle($('#kidRadio').is(':checked'));
+$(document).ready(function () {
+  // Initial check on page load
+  $('#parentEmailGroup').toggle($('#kidRadio').is(':checked'));
 
-    // Toggle when Kid radio is changed
-    $(document).on('change', '#kidRadio', function() {
-      $('#parentEmailGroup').toggle(this.checked);
-    });
+  // Toggle when Kid radio is changed
+  $(document).on('change', '#kidRadio', function () {
+    $('#parentEmailGroup').toggle(this.checked);
+  });
 
-    // Hide when Parent radio is checked
-    $(document).on('change', '#parentRadio', function() {
-      $('#parentEmailGroup').hide();
-    });
+  // Hide when Parent radio is checked
+  $(document).on('change', '#parentRadio', function () {
+    $('#parentEmailGroup').hide();
+  });
 
-    displayDate();
+  displayDate();
 
 // handle displaying the date
 function displayDate() {
@@ -25,10 +25,5 @@ function displayDate() {
     $("#display-Day").text(formattedTime);
   }, 1000);
 }
-   
+
 });
-
-
-
-
-
