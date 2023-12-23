@@ -46,3 +46,25 @@ function checkLoginStatus() {
         $('#logoutBtn').hide();
     }
 }
+
+// Display error messages in the specified modal
+function displayErrorMessage(modalId, message) {
+    const errorMessageElement = $(`#${modalId} .error-message`);
+    errorMessageElement.text(message);
+
+    // Hide the error message after a few seconds
+    setTimeout(function () {
+        errorMessageElement.text(""); // Clear the message
+    }, 3000); // display time
+}
+
+// Display confirmation messages
+function displayConfirmationMessage(confirmationAlert, message) {
+    confirmationAlert.text(message);
+    confirmationAlert.show();
+
+    // Hide the confirmation message after a few seconds
+    setTimeout(function () {
+        confirmationAlert.hide();
+    }, 5000); // display time
+}

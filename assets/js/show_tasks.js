@@ -1,15 +1,15 @@
 $(document).ready(function () {
 
     const container = $('.container');
-  
+
     // Load tasks to the page using Bootstrap cards
     function loadTasksToPage() {
       const tasks = getTasksFromLocalStorage();
       const taskCardContainer = $('#task-card-container');
-  
+
       // Clear existing cards
       taskCardContainer.empty();
-  
+
       // Check if there are tasks available
       if (tasks.length === 0) {
         // Display a message when no tasks are available
@@ -22,7 +22,7 @@ $(document).ready(function () {
       } else {
         // Sort tasks in reverse order (newest first)
         tasks.sort((a, b) => new Date(b.date) - new Date(a.date));
-  
+
         // Loop to create Bootstrap cards for each task
         tasks.forEach(function (task, i) {
           // Check if task properties exist before displaying
@@ -44,31 +44,31 @@ $(document).ready(function () {
         });
       }
     }
-  
+
     // Load tasks to the page on initial page load
     loadTasksToPage();
-  
-  
+
+
     // Load tasks to the table in kids dashboard
     function getTasksFromLocalStorage() {
       const tasks = [];
-  
+
       // Iterate through all localStorage keys
       for (let i = 0; i < localStorage.length; i++) {
         const key = localStorage.key(i);
+        if (key.includes("task")) {
         const task = JSON.parse(localStorage.getItem(key));
         tasks.push(task);
+      };
       }
-  
+
       return tasks;
     }
-  
-    // //event delegation event listener for added task button  
-    // container.on('click', '.task-done-button', function () {
-    //   const card = $(this).closest('.card');
-    //   const taskValue = card.data('task-value');
-    //   console.log(taskValue);
-    // });
-  
-  });
-  
+
+    //event delegation event listener for added task button
+    container.on('click', '.task-done-button', function () {
+      const card = $(this).closest('.col-md-4');
+      const taskValue = card.data('task-value');
+      console.log(taskValue);
+    });
+
