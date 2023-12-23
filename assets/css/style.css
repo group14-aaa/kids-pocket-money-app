@@ -97,6 +97,15 @@ h3 {
   color: var(--bg-darkgrey) !important;
 }
 
+.nav-balance {
+  padding: 10px;
+  margin: 5px;
+  color: var(--bg-light) !important;
+  border: none;
+  font-weight: bold;
+}
+
+
 .navbar-toggler-icon {
   background-color: var(--bg-light);
 }

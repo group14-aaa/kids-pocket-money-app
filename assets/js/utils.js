@@ -46,3 +46,8 @@ function checkLoginStatus() {
         $('#logoutBtn').hide();
     }
 }
+
+// Display error messages in the specified modal
+function displayErrorMessage(modalId, message) {
+    $(`#${modalId} .error-message`).text(message);
+  }
