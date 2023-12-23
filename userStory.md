@@ -12,12 +12,12 @@
 
 //When all tasks are completed, a reward (api picture / gif or similar is displyaed to user)
 //At the end of the week, the total value of tasks are calculated
-//start new week button, this can copy all tasks from previous week and wipe local storage 
+//start new week button, this can copy all tasks from previous week and wipe local storage
 
 
 
 Api ideas....
-//Api's - a reward api when task (or set of tasks complete) - i.e Roblox? or giphy celebration 
+//Api's - a reward api when task (or set of tasks complete) - i.e Roblox? or giphy celebration
 //APi - date and time, picture of the day (nasa)
 //api - reccomend book
 // pokemon api?
