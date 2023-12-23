@@ -1,27 +1,34 @@
 $(document).ready(function () {
-    let balance = 0;
-    balanceField = $("#balanceField");
-    const container = $('.container');
-  
-//event delegation event listener for added task button
-container.on('click', '.task-done-button', function () {
-const card = $(this).closest('.col-md-4');
-const taskValue = card.data('task-value');
+  let balance = 0;
+  let balanceField = $("#balance-value");
+  const container = $(".container");
 
-console.log (balance);
-
-calculateBalance(taskValue);
-
-});
-
-function calculateBalance (taskValue) {
-    taskValue = parseFloat(taskValue);
-    balance += taskValue;
- // balanceField.text(balance);
-}
-
-//store balance in local storage
-localStorage.setItem("balanceTotal", JSON.stringify(balance));
-
+  //event delegation event listener for added task button
+  container.on("click", ".task-done-button", function () {
+    const card = $(this).closest(".col-md-4");
+    const taskValue = card.data("task-value");
+    calculateBalance(taskValue);
   });
 
+  //calculate balnce and store in local storege
+  function calculateBalance(taskValue) {
+    taskValue = parseFloat(taskValue);
+    balance += taskValue;
+    localStorage.setItem("balanceTotal", JSON.stringify(balance));
+    displayBalance ();
+  }
+
+  // Function to get items from storage and display
+  function displayBalance() {
+    const userBalance = localStorage.getItem("balanceTotal");
+
+    // Parse the JSON string to convert it into a JavaScript number
+    const parsedBalance = JSON.parse(userBalance);
+
+   // Check if parsedBalance is not empty before setting the text content
+   if (parsedBalance !== null) {
+    // Convert the parsed balance back to a string before setting it
+    balanceField.text(parsedBalance.toString());
+  }
+}
+});
