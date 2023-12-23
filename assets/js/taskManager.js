@@ -61,6 +61,8 @@ $(document).ready(function () {
                           <h5 class="card-title">${task.name || 'N/A'}</h5>
                           <p class="card-text">${task.description || 'N/A'}</p>
                           <p class="card-text">Value: £${task.value || 'N/A'}</p>
+                          <button type="submit" class="btn btn-primary task-done-button">Done</button>
+                          <button class="btn-secondary task-not-complete-btn">Not Done</button>
                       </div>
                   </div>
               </div>
@@ -86,4 +88,25 @@ function getTasksFromLocalStorage() {
   }
 
   return tasks;
+
+
+  //remove task from page view 
+  //add value of task to local storage and add to balance
+  //remove task from local storage
+
+
+//event delegation event listner   NOT WORKING
+container.on('click', '.task-done-button', function () {
+
+    console.log("button pressed");
+
+    // const card = $(this).closest('.card');
+    //   const taskValue = card.find('.task.value').val();
+    // console.log("Task Value:", taskValue);
+
+    });
+
+
+
+
 }
