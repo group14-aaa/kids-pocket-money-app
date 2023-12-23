@@ -75,7 +75,14 @@
               <h2>Add new Task</h2>
 
               <form id="task-form">
-                <div class="task-form-container">
+
+                <div class="task-form-container my-0">
+                  <!-- Confirmation message -->
+                <div
+                class="alert text-success"
+                role="alert"
+                id="confirmation-alert"
+                style="display: none"></div>
                   <div class="mb-3">
                     <label for="task-name-input">Task Name</label>
                     <input
