@@ -3,32 +3,33 @@ $(document).ready(function () {
   let balanceField = $("#balance-value");
   const container = $(".container");
 
-  //event delegation event listener for added task button
+  // Check for stored balance on page load
+  const storedBalance = localStorage.getItem("balanceTotal");
+  if (storedBalance !== null) {
+    // If there is a stored balance, set it to the balance variable
+    balance = JSON.parse(storedBalance);
+    // Display the balance on page load
+    displayBalance();
+  }
+
+  // event delegation event listener for added task button
   container.on("click", ".task-done-button", function () {
     const card = $(this).closest(".col-md-4");
     const taskValue = card.data("task-value");
     calculateBalance(taskValue);
   });
 
-  //calculate balnce and store in local storege
+  // Calculate Balance and store in local storage
   function calculateBalance(taskValue) {
     taskValue = parseFloat(taskValue);
     balance += taskValue;
     localStorage.setItem("balanceTotal", JSON.stringify(balance));
-    displayBalance ();
+    displayBalance();
   }
 
   // Function to get items from storage and display
   function displayBalance() {
-    const userBalance = localStorage.getItem("balanceTotal");
-
-    // Parse the JSON string to convert it into a JavaScript number
-    const parsedBalance = JSON.parse(userBalance);
-
-   // Check if parsedBalance is not empty before setting the text content
-   if (parsedBalance !== null) {
-    // Convert the parsed balance back to a string before setting it
-    balanceField.text(parsedBalance.toString());
+    // Set the text content of the balanceField with two decimal points
+    balanceField.text(balance.toFixed(2));
   }
-}
 });

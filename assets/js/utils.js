@@ -39,11 +39,23 @@ function handleLogout() {
 function checkLoginStatus() {
     const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn')) || false;
 
+    // Select the login and register buttons
+    const loginButton = $('.navbar-nav button[data-bs-target="#login"]');
+    const registerButton = $('.navbar-nav button[data-bs-target="#register"]');
+
     // Show or hide the logout button based on login status
     if (isLoggedIn) {
+        // User is logged in, hide login and register buttons
+        loginButton.hide();
+        registerButton.hide();
         $('#logoutBtn').show();
+        $('#tasksBtn').show();
     } else {
+        // User is not logged in, show login and register buttons
+        loginButton.show();
+        registerButton.show();
         $('#logoutBtn').hide();
+        $('#tasksBtn').hide();
     }
 }
 
