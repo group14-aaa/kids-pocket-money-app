@@ -59,12 +59,20 @@ function displayErrorMessage(modalId, message) {
 }
 
 // Display confirmation messages
-function displayConfirmationMessage(confirmationAlert, message) {
-    confirmationAlert.text(message);
-    confirmationAlert.show();
+function displayConfirmationMessage(alertElement, message) {
+    alertElement.text(message);
+    alertElement.show();
 
     // Hide the confirmation message after a few seconds
     setTimeout(function () {
-        confirmationAlert.hide();
+        alertElement.hide();
     }, 5000); // display time
+}
+
+function getExistingUsers() {
+    return JSON.parse(localStorage.getItem('users')) || [];
+}
+
+function getCurrentUser() {
+    return JSON.parse(localStorage.getItem('currentUser')) || {};
 }
