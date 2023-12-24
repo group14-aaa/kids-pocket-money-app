@@ -59,6 +59,8 @@
     <!-- MAIN -->
     <main class="content">
       <div class="container">
+
+        
         <h2>Add New Task</h2>
         <p>Empower your kids with responsibilities and rewards!</p>
         <!-- Modal button to add new task -->
@@ -140,6 +142,28 @@
           </div>
         </div>
       </div>
+
+         <!-- Task to do section -->
+         <div class="container mt-4">
+          <h2>Kid's Task List</h2>
+
+          <div class="row" id="task-card-container">
+            <!-- Task cards added here -->
+          </div>
+        </div>
+
+        <!-- Current Balance section /// change position + styling  ??-->
+      <div class="container">
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="./assets/images/money.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Balance:</h5>
+            <p class="card-text" id="balance-value"></p>
+            <!-- add this featture if we have time? -->
+            <a href="#" class="btn btn-primary">Withdraw</a>
+        </div>
+      </div>
+    </div>
     </main>
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
