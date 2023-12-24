@@ -1,103 +1,103 @@
-  <!DOCTYPE html>
-  <html lang="en">
-    <head>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-        rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
-        crossorigin="anonymous" />
-      <link rel="stylesheet" href="./assets/css/style.css" />
-      <title>Kid Dashboard</title>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Kid Dashboard</title>
+  </head>
 
-    <body>
-      <!-- HEADER -->
-      <header>
-        <!-- Navigation -->
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="container-xxl">
-            <a class="navbar-brand m-2 ms-5" href="./">Chores To Do</a>
-            <!-- Toggle button for mobile -->
-            <button
-              class="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#main-nav"
-              aria-controls="main-nav"
-              aria-expanded="false"
-              aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <!-- Navigation menu -->
-            <div
-              class="collapse navbar-collapse justify-content-end align-center"
-              id="main-nav">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Task List</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Balance</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">History</a>
-                </li>
-                <li class="nav-item">
-                  <button class="nav-link btn btn-primary" id="logoutBtn">Logout</button>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-      </header>
+  <body>
+    <!-- HEADER -->
+    <header>
+      <!-- Navigation -->
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-xxl">
+          <a class="navbar-brand m-2 ms-5" href="./">Chores To Do</a>
+          <!-- Toggle button for mobile -->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#main-nav"
+            aria-controls="main-nav"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- Navigation menu -->
+          <div
+            class="collapse navbar-collapse justify-content-end align-center"
+            id="main-nav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="./">Home</a>
+              </li>
 
-      <!-- MAIN -->
-      <main class="content">
-        <div class="text-center p-3">
-          <h3 id="display-Day"></h3>
-        </div>
-
-        <!-- Task to do section -->
-        <div class="container mt-4">
-          <h2>Task List</h2>
-
-          <div class="row" id="task-card-container">
-            <!-- Task cards added here -->
+              <li class="nav-item">
+                <a class="nav-link" href="./balance.html">Withdraw</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./redirectToDashboard.html"
+                  >Task List</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">History</a>
+              </li>
+              <li class="nav-item">
+                <p class="nav-balance">
+                  Balance: <span id="balance-value">0.00</span> £
+                </p>
+              </li>
+              <li class="nav-item">
+                <button class="nav-link btn btn-primary" id="logoutBtn">
+                  Logout
+                </button>
+              </li>
+            </ul>
           </div>
         </div>
+      </nav>
+    </header>
 
-        <!-- Current Balance section /// change position + styling  ??-->
-      <div class="container col-md-4 mb-4">
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="./assets/images/money.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Balance:</h5>
-            <p class="card-text" id="balance-value"></p>
-            <!-- add this featture if we have time? -->
-            <a href="#" class="btn btn-primary">Withdraw</a>
+    <!-- MAIN -->
+    <main class="content">
+      <div class="text-center p-3">
+        <h3 id="display-Day"></h3>
+      </div>
+
+      <!-- Task to do section -->
+      <div class="container mt-4">
+        <h2>Task List</h2>
+
+        <div class="row" id="task-card-container">
+          <!-- Task cards added here -->
         </div>
       </div>
-    </div>
-      </main>
+    </main>
 
-      <!-- FOOTER -->
-      <footer>
-        <span>2023 Kids Pocket Money App</span>
-      </footer>
-      <!-- Scripts -->
-      <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
-      <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-        crossorigin="anonymous"></script>
-      <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-      <script src="./assets/js/status.js"></script>
-      <script src="./assets/js/utils.js"></script>
-      <script src="./assets/js/balance.js"></script>
-      <script src="./assets/js/add_tasks.js"></script>
-      <script src="./assets/js/show_tasks.js"></script>
-      <script src="./assets/js/scripts.js"></script>
-    </body>
-  </html>
+    <!-- FOOTER -->
+    <footer>
+      <span>2023 Kids Pocket Money App</span>
+    </footer>
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+    <!-- <script src="./assets/js/status.js"></script> -->
+    <script src="./assets/js/utils.js"></script>
+    <script src="./assets/js/balance.js"></script>
+    <script src="./assets/js/add_tasks.js"></script>
+    <script src="./assets/js/show_tasks.js"></script>
+    <script src="./assets/js/scripts.js"></script>
+  </body>
+</html>

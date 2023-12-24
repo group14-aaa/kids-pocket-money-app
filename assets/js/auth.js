@@ -32,10 +32,6 @@ $(document).ready(function () {
         });
     }
 
-    function displayErrorMessage(modalId, message) {
-        $(`#${modalId} .error-message`).text(message);
-    }
-
     function validateRegistrationForm(email, password, confirmPassword, userType, parentEmail) {
         if (!email || !password || !confirmPassword) {
             return 'All fields are required.';
