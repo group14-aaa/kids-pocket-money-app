@@ -32,6 +32,10 @@ $(document).ready(function () {
     // Get the task ID from the card
     const taskId = card.find(".task-done-button").data("task-id");
 
+    // Get the logged-in kid's email
+    const currentUser = getCurrentUser();
+    const kidEmail = currentUser.email;
+
     // Remove the task from local storage
     const tasks = JSON.parse(localStorage.getItem(taskId)) || [];
     const remainingAssignedKids = tasks.assignedKids.filter(kid => kid !== kidEmail);
