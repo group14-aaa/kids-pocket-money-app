@@ -63,12 +63,9 @@ $(document).ready(function () {
       return tasks;
     }
   
-    // //event delegation event listener for added task button  
-    // container.on('click', '.task-done-button', function () {
-    //   const card = $(this).closest('.card');
-    //   const taskValue = card.data('task-value');
-    //   console.log(taskValue);
-    // });
+  
   
   });
   
+
+//   Next show the tasks in the parent dashboard.

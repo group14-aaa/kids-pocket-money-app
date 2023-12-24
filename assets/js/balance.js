@@ -25,6 +25,9 @@ $(document).ready(function () {
     // Parse the JSON string to convert it into a JavaScript number
     const parsedBalance = JSON.parse(userBalance);
 
+
+    ///parsed balance is not being added to the balance field text....need to figure why//
+    
    // Check if parsedBalance is not empty before setting the text content
    if (parsedBalance !== null) {
     // Convert the parsed balance back to a string before setting it
