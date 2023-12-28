@@ -84,4 +84,6 @@ $(document).ready(function () {
     // Set the text content of the balanceField with two decimal points
     balanceField.text(kidBalance.toFixed(2));
   }
+
+ 
 });
