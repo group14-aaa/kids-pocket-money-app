@@ -26,6 +26,11 @@ $(document).ready(function () {
 
     // Remove the task from the list and move it to task history
     moveTaskToHistory(card);
+
+    //show giphy when task complete //NOT WORKING?
+    callApi();
+
+  
   });
 
   function moveTaskToHistory(card) {
