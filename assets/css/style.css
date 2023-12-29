@@ -2,8 +2,8 @@
 :root {
   --primary-color: #4CAF50; /* Green color */
   --secondary-color: #ff6f61; /* Coral color */
-  --bg-light: #f8f9fa; /* Light gray background */
-  --bg-darkgrey: #333;
+  --bg-light: #f8f9fa; /* Light white */
+  --bg-darkgrey: #333; /* Light gray*/
 }
 
 /* Reset styles for body */
@@ -55,6 +55,22 @@ body {
     transform: scale(0.9);
     opacity: 0;
   }
+}
+
+/* Gif Card Style */
+.gif-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gif-container {
+  max-width: 100%;
+}
+
+.centered-gif {
+  display: block;
+  margin: 0 auto;
 }
 
 /* Key Features and Benefits Section */
