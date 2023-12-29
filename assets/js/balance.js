@@ -42,11 +42,8 @@ $(document).ready(function () {
       // Play audio on completing a task
       playAudio('./assets/audio/pencil_check_mark_1.mp3');
 
-      // Apply animation to the completed task card
-      animateCompletedTask(card);
-      
-      //show giphy when task complete
-      callApi();
+      // Apply gif animation to the completed task card
+      displayGif(card);
 
       // Remove the click event handler to prevent potential issues
       $("#confirmTask").off("click");
@@ -59,13 +56,51 @@ $(document).ready(function () {
     });
   });
 
-  // Function to animate completed task
-  function animateCompletedTask(card) {
-    card.addClass('task-completed');
-    setTimeout(function () {
-      // Remove the task from the list and move it to task history
-      moveTaskToHistory(card);
-    }, 1000);  // 1 second animation duration
+  // Function to display a gif on completed task
+  function displayGif(card) {
+    // Create a new card for the Giphy gif
+    const gifCard = $("<div>").addClass("col-md-4 gif-card");
+
+    // Call Giphy API and append gif to the new card
+    callGiphyApi().then(function (giphyUrl) {
+      let gifDiv = $("<div>").addClass("gif-container");
+      let wellDone = $("<img>").attr("src", giphyUrl).addClass("centered-gif img-fluid");
+      gifDiv.append(wellDone);
+      gifCard.append(gifDiv);
+
+      // Replace the completed task card with the gif card
+      card.replaceWith(gifCard);
+
+      // Timeout duration for removing the gif card
+      const displayDuration = 10000; // 10 seconds gif display duration
+
+      // After display duration, remove the gif card
+      setTimeout(function () {
+        gifCard.remove();
+        // Move the task to history after gif is removed
+        moveTaskToHistory(card);
+      }, displayDuration);
+    });
+  }
+
+  // Gihpy API
+  async function callGiphyApi() {
+    const queryURL =
+      "https://api.giphy.com/v1/gifs/random?api_key=Kz3LZ6By1ZZOjvwM38fgfFUgDljuq6hl&tag=dance&rating=pg";
+
+    try {
+      const response = await fetch(queryURL);
+      const data = await response.json();
+
+      // Get the image from the API
+      let giphyUrl = data.data.images.fixed_height.url;
+      return giphyUrl;
+
+    } catch (error) {
+
+      console.error("Error fetching data from Giphy API:", error);
+      throw error;
+    }
   }
 
   function moveTaskToHistory(card) {
@@ -125,5 +160,4 @@ $(document).ready(function () {
     balanceField.text(kidBalance.toFixed(2));
   }
 
- 
 });
