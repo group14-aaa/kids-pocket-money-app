@@ -4,11 +4,11 @@ $(document).ready(function () {
   const container = $(".container");
 
   // Function to play audio on task complete
-  // function playAudio(audioFile) {
-  //   const audio = new Audio(audioFile);
-  //   audio.volume = 0.5; // Set volume to 50%
-  //   audio.play();
-  // }
+  function playAudio(audioFile) {
+    const audio = new Audio(audioFile);
+    audio.volume = 0.5; // Set volume to 50%
+    audio.play();
+  }
 
   // Get the logged-in kid's email
   const currentUser = getCurrentUser();
@@ -40,7 +40,7 @@ $(document).ready(function () {
       $("#confirmationModal").modal("hide");
 
       // Play audio on completing a task
-      // playAudio('./assets/audio/pencil_check_mark_1.mp3');
+      playAudio('./assets/audio/pencil_check_mark_1.mp3');
 
       // Apply gif animation to the completed task card
       displayGif(card);
