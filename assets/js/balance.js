@@ -3,6 +3,13 @@ $(document).ready(function () {
   let balanceField = $("#balance-value");
   const container = $(".container");
 
+  // Function to play audio on task complete
+  // function playAudio(audioFile) {
+  //   const audio = new Audio(audioFile);
+  //   audio.volume = 0.5; // Set volume to 50%
+  //   audio.play();
+  // }
+
   // Get the logged-in kid's email
   const currentUser = getCurrentUser();
   const kidEmail = currentUser.email;
@@ -21,12 +28,42 @@ $(document).ready(function () {
     const card = $(this).closest(".col-md-4");
     const taskValue = card.data("task-value");
 
-    // Calculate the balance for the kid and store in local storage
-    calculateBalance(taskValue, kidEmail);
+    // Open the confirmation modal
+    $("#confirmationModal").modal("show");
 
-    // Remove the task from the list and move it to task history
-    moveTaskToHistory(card);
+    // Set up the confirm button click event
+    $("#confirmTask").off("click").on("click", function () {
+      // Calculate the balance for the kid and store in local storage
+      calculateBalance(taskValue, kidEmail);
+
+      // Close the confirmation modal
+      $("#confirmationModal").modal("hide");
+
+      // Play audio on completing a task
+      // playAudio('./assets/audio/pencil_check_mark_1.mp3');
+
+      // Apply animation to the completed task card
+      animateCompletedTask(card);
+
+      // Remove the click event handler to prevent potential issues
+      $("#confirmTask").off("click");
+    });
+
+    // Set up the cancel button click event
+    $("#cancelTask").off("click").on("click", function () {
+      // Close the confirmation modal
+      $("#confirmationModal").modal("hide");
+    });
   });
+
+  // Function to animate completed task
+  function animateCompletedTask(card) {
+    card.addClass('task-completed');
+    setTimeout(function () {
+      // Remove the task from the list and move it to task history
+      moveTaskToHistory(card);
+    }, 1000);  // 1 second animation duration
+  }
 
   function moveTaskToHistory(card) {
     // Get the task ID from the card

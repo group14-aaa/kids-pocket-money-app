@@ -19,6 +19,11 @@ $(document).ready(function () {
       const parentEmail = currentUser.email;
       const associatedKids = existingUsers.filter(kid => kid.parentEmail === parentEmail);
 
+      if (associatedKids.length === 0) {
+        const noKidsAvailable = `<h4 class="text-center">No kids available<h3/>`
+        associationList.append(noKidsAvailable);
+      }
+
       if (associatedKids.length > 0) {
         // Iterate through associatedKids and create child checkboxes
         associatedKids.forEach(kid => {
