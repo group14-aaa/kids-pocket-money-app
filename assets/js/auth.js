@@ -1,25 +1,25 @@
 $(document).ready(function () {
 
-    function updateAssociationInfo() {
-        const existingUsers = getExistingUsers();
-        const associationList = $('#associationList');
+    // function updateAssociationInfo() {
+    //     const existingUsers = getExistingUsers();
+    //     const associationList = $('#associationList');
 
-        // Clear previous association information
-        associationList.empty();
+    //     // Clear previous association information
+    //     associationList.empty();
 
-        // Display parent-kid association
-        existingUsers.forEach(function (user) {
-            if (user.userType === 'parent' && user.parentEmail === '') {
-                const parentEmail = user.email;
-                const associatedKids = existingUsers.filter(kid => kid.parentEmail === parentEmail);
+    //     // Display parent-kid association
+    //     existingUsers.forEach(function (user) {
+    //         if (user.userType === 'parent' && user.parentEmail === '') {
+    //             const parentEmail = user.email;
+    //             const associatedKids = existingUsers.filter(kid => kid.parentEmail === parentEmail);
 
-                if (associatedKids.length > 0) {
-                    const kidEmails = associatedKids.map(kid => `<strong>${kid.email}</strong>`);
-                    associationList.append(`<li><strong>${parentEmail}</strong> is associated with: ${kidEmails.join(', ')}</li>`);
-                }
-            }
-        });
-    }
+    //             if (associatedKids.length > 0) {
+    //                 const kidEmails = associatedKids.map(kid => `<strong>${kid.email}</strong>`);
+    //                 associationList.append(`<li><strong>${parentEmail}</strong> is associated with: ${kidEmails.join(', ')}</li>`);
+    //             }
+    //         }
+    //     });
+    // }
 
     function getExistingUsers() {
         return JSON.parse(localStorage.getItem('users')) || [];
@@ -113,5 +113,5 @@ $(document).ready(function () {
         $('#parentEmailInput').toggle($(this).val() === 'kid');
     });
 
-    updateAssociationInfo();
+    // updateAssociationInfo();
 });

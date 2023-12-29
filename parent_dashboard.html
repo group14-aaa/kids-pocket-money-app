@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="./assets/images/favicon.png" />
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -17,7 +18,7 @@
       <!-- Navigation -->
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-xxl">
-          <a class="navbar-brand m-2 ms-5" href="./">Chore Tracker</a>
+          <a class="navbar-brand m-2 ms-5" href="./">Kids Pocket Money</a>
           <!-- Toggle button for mobile -->
           <button
             class="navbar-toggler"
@@ -58,9 +59,7 @@
     </header>
     <!-- MAIN -->
     <main class="content">
-      <div class="container">
-
-        
+      <div class="container text-center">
         <h2>Add New Task</h2>
         <p>Empower your kids with responsibilities and rewards!</p>
         <!-- Modal button to add new task -->
@@ -80,21 +79,20 @@
               <h2>Add new Task</h2>
 
               <form id="task-form">
-
                 <div class="task-form-container my-0">
                   <!-- Confirmation message -->
-                <div
-                class="alert text-success"
-                role="alert"
-                id="confirmation-alert"
-                style="display: none"></div>
+                  <div
+                    class="alert text-success"
+                    role="alert"
+                    id="confirmation-alert"
+                    style="display: none"></div>
                   <div class="mb-3">
                     <label for="task-name-input">Task Name</label>
                     <input
                       type="text"
                       id="task-name-input"
                       class="form-control"
-                      placeholder="Enter the task's name"
+                      placeholder="Enter the task name"
                       required />
                   </div>
                   <div class="mb-3">
@@ -120,22 +118,23 @@
                   <div id="associationInfo">
                     <h2>Kids</h2>
                     <ul id="associationList"></ul>
-                </div>
-                <!-- Error message area -->
-                <div class="error-message text-danger"></div>
+                  </div>
+                  <!-- Error message area -->
+                  <div class="error-message text-danger"></div>
 
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal">
-                    Close
-                  </button>
-                  <button
-                    type="submit"
-                    class="btn btn-primary task-submit-button">
-                    Submit Task
-                  </button>
+                  <div class="modal-footer">
+                    <button
+                      type="button"
+                      class="btn btn-secondary"
+                      data-bs-dismiss="modal">
+                      Close
+                    </button>
+                    <button
+                      type="submit"
+                      class="btn btn-primary task-submit-button">
+                      Submit Task
+                    </button>
+                  </div>
                 </div>
               </form>
             </div>
@@ -143,28 +142,21 @@
         </div>
       </div>
 
-         <!-- Task to do section -->
-         <div class="container mt-4">
-          <h2>Kid's Task List</h2>
+      <!-- Task to do section -->
+      <div class="container mt-4">
+        <h2>Kid's Task List</h2>
 
-          <div class="row" id="task-card-container">
-            <!-- Task cards added here -->
-          </div>
-        </div>
-
-        <!-- Current Balance section /// change position + styling  ??-->
-      <div class="container">
-        <div class="card" style="width: 18rem;">
-          <img class="card-img-top" src="./assets/images/money.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">Balance:</h5>
-            <p class="card-text" id="balance-value"></p>
-            <!-- add this featture if we have time? -->
-            <a href="#" class="btn btn-primary">Withdraw</a>
+        <div class="row" id="task-card-container">
+          <!-- Task cards added here -->
         </div>
       </div>
-    </div>
     </main>
+
+    <!-- FOOTER -->
+    <footer>
+      <span>2023 Kids Pocket Money App</span>
+    </footer>
+
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
     <script

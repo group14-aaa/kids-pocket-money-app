@@ -42,18 +42,21 @@ function checkLoginStatus() {
     // Select the login and register buttons
     const loginButton = $('.navbar-nav button[data-bs-target="#login"]');
     const registerButton = $('.navbar-nav button[data-bs-target="#register"]');
+    const heroRegisterButton = $('#hero-intro button[data-bs-target="#heroRegister"]');
 
     // Show or hide the logout button based on login status
     if (isLoggedIn) {
         // User is logged in, hide login and register buttons
         loginButton.hide();
         registerButton.hide();
+        heroRegisterButton.hide();
         $('#logoutBtn').show();
         $('#tasksBtn').show();
     } else {
         // User is not logged in, show login and register buttons
         loginButton.show();
         registerButton.show();
+        heroRegisterButton.show();
         $('#logoutBtn').hide();
         $('#tasksBtn').hide();
     }
