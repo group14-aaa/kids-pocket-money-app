@@ -1,8 +1,8 @@
-$("#task-list").submit(function (event) {
+$("#task-input").submit(function (event) {
   event.preventDefault();
 });
 
-var taskInput = $('input[name="task-input"]').val().trim();
+var taskList = $('input[name="task-input"]').val().trim();
 
 // if there's nothing in the form entered, don't print to the page
 if (!taskList.length) {
@@ -11,7 +11,7 @@ if (!taskList.length) {
 }
 
 // print to the page
-taskCardContainer.append(task);
+taskCardContainer.append(task - input);
 
 // Save the updated taskList to Local Storage;
 localStorage.setItem("taskList", JSON.stringify(taskList));
