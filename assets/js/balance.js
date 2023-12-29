@@ -26,6 +26,11 @@ $(document).ready(function () {
 
     // Remove the task from the list and move it to task history
     moveTaskToHistory(card);
+
+    //show giphy when task complete //NOT WORKING?
+    callApi();
+
+  
   });
 
   function moveTaskToHistory(card) {
@@ -84,4 +89,6 @@ $(document).ready(function () {
     // Set the text content of the balanceField with two decimal points
     balanceField.text(kidBalance.toFixed(2));
   }
+
+ 
 });
