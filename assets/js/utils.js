@@ -42,7 +42,7 @@ function checkLoginStatus() {
     // Select the login and register buttons
     const loginButton = $('.navbar-nav button[data-bs-target="#login"]');
     const registerButton = $('.navbar-nav button[data-bs-target="#register"]');
-    const heroRegisterButton = $('#hero-intro button[data-bs-target="#heroRegister"]');
+    const heroRegisterButton = $('#hero-intro button[data-bs-target="#register"]');
 
     // Show or hide the logout button based on login status
     if (isLoggedIn) {
