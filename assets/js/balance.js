@@ -44,6 +44,9 @@ $(document).ready(function () {
 
       // Apply animation to the completed task card
       animateCompletedTask(card);
+      
+      //show giphy when task complete //NOT WORKING?
+      callApi();
 
       // Remove the click event handler to prevent potential issues
       $("#confirmTask").off("click");
@@ -121,4 +124,6 @@ $(document).ready(function () {
     // Set the text content of the balanceField with two decimal points
     balanceField.text(kidBalance.toFixed(2));
   }
+
+ 
 });
