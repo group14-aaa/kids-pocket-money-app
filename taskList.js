@@ -1,10 +1,27 @@
-var taskList = $('input[name="task-input"]').val();
+$("#task-list").submit(function (event) {
+  event.preventDefault();
+});
+
+var taskInput = $('input[name="task-input"]').val().trim();
 
 // if there's nothing in the form entered, don't print to the page
-if (!taskList) {
-  console.log("No task list yet!");
+if (!taskList.length) {
+  console.log("No tasks in the list yet!");
   return;
 }
 
 // print to the page
-taskList.append("<li>" + task - input + "</li>");
+taskCardContainer.append(task);
+
+// Save the updated taskList to Local Storage;
+localStorage.setItem("taskList", JSON.stringify(taskList));
+
+function displayTasks() {
+  var taskCardContainer = $("#task-card-container");
+  taskCardContainer.text(""); // Clear the existing content
+
+  // Iterate through taskList and append each task to the container
+  taskList.forEach(function (task) {
+    taskCardContainer.append(createTaskCard(task));
+  });
+}

@@ -108,34 +108,40 @@
       </div>
     </div>
 
-    <!-- Task to do section -->
+    <!-- //Task to do section -->
     <div class="container mt-4">
       <h2>Kid's Active Task List</h2>
+      <!-- //Task card added here -->
       <div class="row" id="task-card-container">
-        <!-- Task form added here -->
-        <form id="task-form">
-          <input type="text" class="form-input w-100" id="task-input" name="task-input" />
-        </form>
+        <div class="col-md-4 mb-4" data-task-value="${task.value}">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">${task.name || 'N/A'}</h5>
+              <p class="card-text">${task.description || 'N/A'}</p>
+              <p class="card-text">Value: £${task.value || 'N/A'}</p>
+              <button type="submit" class="btn btn-primary task-done-button" data-task-id="${task.id}">Done</button>
+              <button class="btn-secondary task-not-complete-btn">Not Done</button>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </main>
-  <!-- FOOTER -->
-  <footer>
-    <span>2023 Kids Pocket Money App</span>
-  </footer>
+      <!-- FOOTER -->
+      <footer>
+        <span>2023 Kids Pocket Money App</span>
+      </footer>
 
-  <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-  <script src="./assets/js/status.js"></script>
-  <script src="./assets/js/utils.js"></script>
-  <script src="./assets/js/balance.js"></script>
-  <script src="./assets/js/add_tasks.js"></script>
-  <script src="./assets/js/show_tasks.js"></script>
-  <script src="./assets/js/scripts.js"></script>
+      <!-- Scripts -->
+      <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
+      <script src="./assets/js/status.js"></script>
+      <script src="./assets/js/utils.js"></script>
+      <script src="./assets/js/balance.js"></script>
+      <script src="./assets/js/add_tasks.js"></script>
+      <script src="./assets/js/show_tasks.js"></script>
+      <script src="./assets/js/scripts.js"></script>
 </body>
 
 </html>
