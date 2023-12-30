@@ -20,8 +20,12 @@ fetch("https://api.api-ninjas.com/v1/quotes?category=" + randomCategory, {
   })
 
   .then((result) => {
-    console.log(result[0].quote);
-    quote.append(result[0].quote);
+
+    const quoteText = result[0].quote;
+    // Add speech marks
+    const quotedText = `"${quoteText}"`; 
+
+    quote.append(quotedText);
   })
 
   .catch((error) => {
