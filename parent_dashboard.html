@@ -45,7 +45,10 @@
                 <a class="nav-link" href="#">Week</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">History</a>
+                <a class="nav-link" href="#">Tasks History</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="./transaction_history.html">Withdraw History</a>
               </li>
               <li class="nav-item">
                 <button class="nav-link btn btn-primary" id="logoutBtn">
@@ -59,7 +62,14 @@
     </header>
     <!-- MAIN -->
     <main class="content">
-      <div class="withdrawMessage"></div>
+      <!-- Display Withdrawal Requests -->
+  <div class="container mt-4">
+    <h2>Withdrawal Requests</h2>
+
+    <div class="row" id="withdrawal-request-container">
+      <!-- Withdrawal requests added here -->
+    </div>
+  </div>
       <div class="container text-center">
         <h2>Add New Task</h2>
         <p>Empower your kids with responsibilities and rewards!</p>
@@ -165,11 +175,14 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <script src="./assets/js/status.js"></script>
+    <!-- <script src="./assets/js/withdraw.js"></script> -->
     <script src="./assets/js/utils.js"></script>
-    <script src="./assets/js/balance.js"></script>
+    <script src="./assets/js/status.js"></script>
     <script src="./assets/js/add_tasks.js"></script>
     <script src="./assets/js/show_tasks.js"></script>
+    <script src="./assets/js/show_withdrawals.js"></script>
+    <script src="./assets/js/transaction_history.js"></script>
     <script src="./assets/js/scripts.js"></script>
+
   </body>
 </html>

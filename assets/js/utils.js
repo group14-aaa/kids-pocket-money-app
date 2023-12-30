@@ -6,7 +6,7 @@ function checkLoginStatusAndRedirect(userType) {
         window.location.href = 'index.html';
     } else {
         // User is logged in
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+        const currentUser = getCurrentUser()
 
         if (currentUser.userType === userType) {
             // Show specific content based on user type

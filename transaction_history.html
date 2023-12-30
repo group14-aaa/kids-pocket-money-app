@@ -10,9 +10,8 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Kid Dashboard</title>
+    <title>Parent Dashboard</title>
   </head>
-
   <body>
     <!-- HEADER -->
     <header>
@@ -39,23 +38,17 @@
               <li class="nav-item">
                 <a class="nav-link" href="./">Home</a>
               </li>
-
               <li class="nav-item">
-                <a class="nav-link" href="./balance.html">Withdraw</a>
+                <a class="nav-link" href="#">Today</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./redirectToDashboard.html">Tasks</a>
+                <a class="nav-link" href="#">Week</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Tasks History</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="./transaction_history.html">Withdraw History</a>
-              </li>
-              <li class="nav-item">
-                <p class="nav-balance">
-                  Balance: <span id="balance-value">0.00</span> £
-                </p>
               </li>
               <li class="nav-item">
                 <button class="nav-link btn btn-primary" id="logoutBtn">
@@ -67,56 +60,22 @@
         </div>
       </nav>
     </header>
-
     <!-- MAIN -->
     <main class="content">
-      <div class="text-center p-3">
-        <h3 id="display-Day"></h3>
-      </div>
-      <div id="quote"></div>
+        <div class="container mt-5">
+            <h2>Transaction History</h2>
 
-      <!-- Task to do section -->
-      <div class="container mt-4">
-        <h2>Tasks To Do List</h2>
-
-        <div class="row" id="task-card-container">
-          <!-- Task cards added here -->
-        </div>
-      </div>
-      <!-- Confirm Task -->
-      <div class="modal" id="confirmationModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="container m-0">
-              <h2>Confirmation</h2>
-              <div class="modal-body">
-                <p>Are you sure you want to mark this task as done?</p>
-              </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="cancelTask">
-                  Cancel
-                </button>
-
-                <button type="button" class="btn btn-primary" id="confirmTask">
-                  Confirm
-                </button>
-              </div>
+            <div class="row" id="transaction-history-container">
+              <!-- Transaction history items will be dynamically added here -->
             </div>
           </div>
-        </div>
-      </div>
+
     </main>
 
     <!-- FOOTER -->
     <footer>
       <span>2023 Kids Pocket Money App</span>
     </footer>
-
-    <!--Font Awesome Icons-->
-    <script
-      src="https://kit.fontawesome.com/16f53945bb.js"
-      crossorigin="anonymous"></script>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
@@ -125,12 +84,12 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <script src="./assets/js/status.js"></script>
+    <!-- <script src="./assets/js/status.js"></script> -->
+    <script src="./assets/js/transaction_history.js"></script>
     <script src="./assets/js/utils.js"></script>
-    <script src="./assets/js/api.js"></script>
-    <script src="./assets/js/balance.js"></script>
-    <script src="./assets/js/add_tasks.js"></script>
-    <script src="./assets/js/show_tasks.js"></script>
     <script src="./assets/js/scripts.js"></script>
+
+
+
   </body>
 </html>
