@@ -29,7 +29,7 @@ function loadTasksToPage() {
                 <p class="card-text">${task.description || 'N/A'}</p>
                 <p class="card-text">Value: £${task.value || 'N/A'}</p>
                 <button type="submit" class="btn btn-primary task-done-button" data-task-id="${task.id}">Done</button>
-                <button class="btn-secondary task-not-complete-btn">Not Done</button>
+                <button class="btn-secondary task-not-complete-btn">Skip</button>
               </div>
             </div>
           </div>
