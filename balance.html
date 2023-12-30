@@ -40,15 +40,34 @@
           >
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link" href="./redirectToDashboard.html"
-                  >Task List</a
-                >
+                <a class="nav-link" href="./">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Balance</a>
+                <a class="nav-link" href="./kid_dashboard.html">To do Tasks</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Calendar
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">Week</a></li>
+                  <li><a class="dropdown-item" href="#">Month</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  History
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Tasks</a></li>
+                  <li><a class="dropdown-item" href="./transaction_history.html">Withdrawals</a></li>
+                </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">History</a>
+                <a class="nav-balance nav-link" href="./balance.html">
+                  Balance: <span id="balance-value">0.00</span> £
+                </a>
               </li>
               <li class="nav-item">
                 <button class="nav-link btn btn-primary" id="logoutBtn">

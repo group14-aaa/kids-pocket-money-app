@@ -39,16 +39,40 @@
                 <a class="nav-link" href="./">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Today</a>
+                <a class="nav-link" href="./parent_dashboard.html">Add Tasks</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Week</a>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Calendar
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">Week</a></li>
+                  <li><a class="dropdown-item" href="#">Month</a></li>
+                </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Tasks History</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./transaction_history.html">Withdraw History</a>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  History
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Tasks</a></li>
+                  <li>
+                    <a class="dropdown-item" href="./transaction_history.html"
+                      >Withdrawals</a
+                    >
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
                 <button class="nav-link btn btn-primary" id="logoutBtn">
@@ -63,13 +87,13 @@
     <!-- MAIN -->
     <main class="content">
       <!-- Display Withdrawal Requests -->
-  <div class="container mt-4">
-    <h2>Withdrawal Requests</h2>
-
-    <div class="row" id="withdrawal-request-container">
-      <!-- Withdrawal requests added here -->
-    </div>
-  </div>
+      <div class="container mt-4">
+        <h2>Withdrawal Requests</h2>
+        <div class="row" id="withdrawal-request-container">
+          <!-- Withdrawal requests added here -->
+        </div>
+      </div>
+      <!-- Display Add Task -->
       <div class="container text-center">
         <h2>Add New Task</h2>
         <p>Empower your kids with responsibilities and rewards!</p>
@@ -183,6 +207,5 @@
     <script src="./assets/js/show_withdrawals.js"></script>
     <script src="./assets/js/transaction_history.js"></script>
     <script src="./assets/js/scripts.js"></script>
-
   </body>
 </html>
