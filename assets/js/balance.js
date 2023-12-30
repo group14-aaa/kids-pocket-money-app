@@ -15,7 +15,7 @@ $(document).ready(function () {
   const kidEmail = currentUser.email;
 
   // Check for stored balance on page load
-  const storedBalance = localStorage.getItem(`balanceTotal_${kidEmail}`);
+  const storedBalance = getLocalStorageItem(`balanceTotal_${kidEmail}`);
   if (storedBalance !== null) {
     // If there is a stored balance, set it to the balance variable
     kidBalance = JSON.parse(storedBalance);
@@ -60,13 +60,12 @@ $(document).ready(function () {
   ///event lister for skip task button
   container.on("click", ".task-not-complete-btn", function () {
     const card = $(this).closest(".col-md-4");
-    const taskValue = card.data("task-value");
 
     // Open the confirmation modal
     $("#skipModal").modal("show");
 
     // Set up the confirm button click event
-    $("#skipTask").off("click").on("click", function () {
+    $("#confirmSkipTask").off("click").on("click", function () {
       ///remove task from local storage
       skipTask(card);
 
@@ -74,14 +73,13 @@ $(document).ready(function () {
       $("#skipModal").modal("hide");
 
       // Remove the click event handler to prevent potential issues
-    $("#skipTask").off("click");
-  });
+      $("#confirmSkipTask").off("click");
+    });
 
-      // Set up the cancel button click event
-      $("#skipTask").off("click").on("click", function () {
-        // Close the confirmation modal
-        $("#skipModal").modal("hide");
-
+    // Set up the cancel button click event
+    $("#cancelSkipTask").off("click").on("click", function () {
+      // Close the confirmation modal
+      $("#skipModal").modal("hide");
 
     });
   });
@@ -102,7 +100,7 @@ $(document).ready(function () {
       card.replaceWith(gifCard);
 
       // Timeout duration for removing the gif card
-      const displayDuration = 10000; // 10 seconds gif display duration
+      const displayDuration = 3000; // 10 seconds gif display duration
 
       // After display duration, remove the gif card
       setTimeout(function () {
@@ -122,66 +120,74 @@ $(document).ready(function () {
     const kidEmail = currentUser.email;
 
     // Remove the task from local storage
-    const tasks = JSON.parse(localStorage.getItem(taskId)) || [];
+    const tasks = getLocalStorageItem(taskId, []);
     const remainingAssignedKids = tasks.assignedKids.filter(kid => kid !== kidEmail);
 
     if (remainingAssignedKids.length === 0) {
       // Remove the task from local storage if no other kids are assigned
-      localStorage.removeItem(taskId);
+      removeLocalStorageItem(taskId);
     } else {
       // Update the task with remaining assigned kids
       tasks.assignedKids = remainingAssignedKids;
-      localStorage.setItem(taskId, JSON.stringify(tasks));
+      setLocalStorageItem(taskId, tasks);
     }
 
     // Add the task to task history for the kid
-    const userTaskHistory = JSON.parse(localStorage.getItem(`taskHistory_${kidEmail}`)) || [];
+    const userTaskHistory = getLocalStorageItem(`taskHistory_${kidEmail}`, []);
     userTaskHistory.push(taskId);
-    localStorage.setItem(`taskHistory_${kidEmail}`, JSON.stringify(userTaskHistory));
+    setLocalStorageItem(`taskHistory_${kidEmail}`, userTaskHistory)
 
     // Reload tasks on the page
     loadTasksToPage();
   }
 
-//function to delete task from local storage if skipped
-function skipTask(card) {
-  // Get the task ID from the card
-  const taskId = card.find(".task-not-complete-btn").data("task-id");
+  function skipTask(card) {
+    console.log(card);
+    // Get the task ID from the card
+    const taskId = card.find(".task-done-button").data("task-id");
 
-  // Get the logged-in kid's email
-  const currentUser = getCurrentUser();
-  const kidEmail = currentUser.email;
+    // Get the logged-in kid's email
+    const currentUser = getCurrentUser();
+    const kidEmail = currentUser.email;
 
-  // Remove the task from local storage
-  const tasks = JSON.parse(localStorage.getItem(taskId)) || [];
-  const remainingAssignedKids = tasks.assignedKids.filter(kid => kid !== kidEmail);
+    // Remove the task from local storage
+    const tasks = getLocalStorageItem(taskId, {});
+    const assignedKids = tasks.assignedKids || [];
 
-  if (remainingAssignedKids.length === 0) {
-    // Remove the task from local storage if no other kids are assigned
-    localStorage.removeItem(taskId);
-  } else {
-    // Update the task with remaining assigned kids
-    tasks.assignedKids = remainingAssignedKids;
-    localStorage.setItem(taskId, JSON.stringify(tasks));
+    const remainingAssignedKids = assignedKids.filter(kid => kid !== kidEmail);
+
+    if (remainingAssignedKids.length === 0) {
+      // Remove the task from local storage if no other kids are assigned
+      removeLocalStorageItem(taskId)
+    } else {
+      // Update the task with remaining assigned kids
+      tasks.assignedKids = remainingAssignedKids;
+      setLocalStorageItem(taskId, tasks);
+
+    }
+
+    // Add the task to task history for the kid
+    const userTaskHistory = getLocalStorageItem(`taskHistory_${kidEmail}`, []);
+    userTaskHistory.push(taskId);
+    setLocalStorageItem(`taskHistory_${kidEmail}`, userTaskHistory);
+
+    // Reload tasks on the page
+    loadTasksToPage();
   }
-
-  // Reload tasks on the page
-  loadTasksToPage();
-}
 
   // Calculate Balance and store in local storage for each kid
   function calculateBalance(taskValue, kidEmail) {
     taskValue = parseFloat(taskValue);
 
     // Get current balance for the kid
-    let kidCurrentBalance = localStorage.getItem(`balanceTotal_${kidEmail}`) || 0;
+    let kidCurrentBalance = getLocalStorageItem(`balanceTotal_${kidEmail}`, 0);
     kidCurrentBalance = JSON.parse(kidCurrentBalance);
 
     // Update the balance for the kid
     kidCurrentBalance += taskValue;
 
     // Store the updated balance for the kid in local storage
-    localStorage.setItem(`balanceTotal_${kidEmail}`, JSON.stringify(kidCurrentBalance));
+    setLocalStorageItem(`balanceTotal_${kidEmail}`, kidCurrentBalance);
 
     // Update the global kidBalance variable
     kidBalance = kidCurrentBalance;
@@ -195,5 +201,4 @@ function skipTask(card) {
     // Set the text content of the balanceField with two decimal points
     balanceField.text(kidBalance.toFixed(2));
   }
-
 });

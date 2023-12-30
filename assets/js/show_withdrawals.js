@@ -2,23 +2,23 @@ $(document).ready(function () {
 
   // Load withdrawal requests to the parent dashboard
   function loadWithdrawalsToPage() {
-      const currentUser = getCurrentUser();
-      const parentEmail = currentUser.email;
+    const currentUser = getCurrentUser();
+    const parentEmail = currentUser.email;
 
-      const parentWithdrawals = JSON.parse(localStorage.getItem(`withdrawals_${parentEmail}`)) || [];
+    const parentWithdrawals = getLocalStorageItem(`withdrawals_${parentEmail}`, []);
 
-      const withdrawalContainer = $("#withdrawal-request-container");
-      withdrawalContainer.empty();
+    const withdrawalContainer = $("#withdrawal-request-container");
+    withdrawalContainer.empty();
 
-      parentWithdrawals.forEach(withdrawalId => {
-          const withdrawalRequest = JSON.parse(localStorage.getItem(withdrawalId));
-          displayWithdrawalRequest(withdrawalRequest);
-      });
+    parentWithdrawals.forEach(withdrawalId => {
+      const withdrawalRequest = getLocalStorageItem(withdrawalId);
+      displayWithdrawalRequest(withdrawalRequest);
+    });
   }
 
   // Display a withdrawal request card
   function displayWithdrawalRequest(withdrawalRequest) {
-      const cardTemplate = `
+    const cardTemplate = `
           <div class="col-md-4">
               <div class="card mb-4">
                   <div class="card-body">
@@ -30,34 +30,35 @@ $(document).ready(function () {
                   </div>
               </div>
           </div>`;
-      $("#withdrawal-request-container").append(cardTemplate);
+    $("#withdrawal-request-container").append(cardTemplate);
   }
 
   // Accept withdrawal request event handler
   $(document).on("click", ".accept-withdrawal-button", function () {
-      const withdrawalId = $(this).data("withdrawal-id");
-      const withdrawalRequest = JSON.parse(localStorage.getItem(withdrawalId));
+    const withdrawalId = $(this).data("withdrawal-id");
+    const withdrawalRequest = getLocalStorageItem(withdrawalId);
 
-      // Update the status to "Accepted"
-      withdrawalRequest.status = "Accepted";
-      localStorage.setItem(withdrawalId, JSON.stringify(withdrawalRequest));
+    // Update the status to "Accepted"
+    withdrawalRequest.status = "Accepted";
+    setLocalStorageItem(withdrawalId, withdrawalRequest);
 
-      // Move to transaction history
-      moveWithdrawalToTransactionHistory(withdrawalRequest);
-      loadWithdrawalsToPage();
+    // Move to transaction history
+    moveWithdrawalToTransactionHistory(withdrawalRequest);
+    loadWithdrawalsToPage();
   });
 
   // Move a withdrawal to transaction history
   function moveWithdrawalToTransactionHistory(withdrawalRequest) {
-      const transactionHistory = JSON.parse(localStorage.getItem("transactionHistory")) || [];
-      transactionHistory.push(withdrawalRequest);
-      localStorage.setItem("transactionHistory", JSON.stringify(transactionHistory));
+    const transactionHistory = getLocalStorageItem("transactionHistory", []);
+    transactionHistory.push(withdrawalRequest);
+    setLocalStorageItem("transactionHistory", transactionHistory)
 
-      // Remove from parent's withdrawals
-      const parentEmail = getCurrentUser().email;
-      const parentWithdrawals = JSON.parse(localStorage.getItem(`withdrawals_${parentEmail}`)) || [];
-      const updatedParentWithdrawals = parentWithdrawals.filter(id => id !== withdrawalRequest.id);
-      localStorage.setItem(`withdrawals_${parentEmail}`, JSON.stringify(updatedParentWithdrawals));
+
+    // Remove from parent's withdrawals
+    const parentEmail = getCurrentUser().email;
+    const parentWithdrawals = getLocalStorageItem(`withdrawals_${parentEmail}`, []);
+    const updatedParentWithdrawals = parentWithdrawals.filter(id => id !== withdrawalRequest.id);
+    setLocalStorageItem(`withdrawals_${parentEmail}`, updatedParentWithdrawals)
   }
 
   // Load withdrawals on dashboard load

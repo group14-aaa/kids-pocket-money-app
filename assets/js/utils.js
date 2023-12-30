@@ -1,65 +1,42 @@
+// Check if the user is logged and redirect
 function checkLoginStatusAndRedirect(userType) {
-    const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn')) || false;
+    const isLoggedIn = getLocalStorageItem('isLoggedIn', false);
+    const currentUser = getCurrentUser();
 
     if (!isLoggedIn) {
         // User is not logged in, redirect to index.html
-        window.location.href = 'index.html';
+        redirectTo('index.html');
+    } else if (currentUser.userType === userType) {
+        // User is logged in and has the correct user type
+        displayUserSpecificContent(userType);
     } else {
-        // User is logged in
-        const currentUser = getCurrentUser()
-
-        if (currentUser.userType === userType) {
-            // Show specific content based on user type
-            $('#content').html(`<p>Hello ${userType === 'parent' ? 'Parent' : 'Kid'}</p>`);
-
-            // Show the logout button
-            $('#logoutBtn').show();
-        } else {
-            // Redirect to index.html for unauthorized access
-            window.location.href = userType === 'parent' ? 'kid_dashboard.html' : 'parent_dashboard.html';
-        }
+        // Redirect to appropriate dashboard for unauthorized access
+        redirectTo(userType === 'parent' ? 'kid_dashboard.html' : 'parent_dashboard.html');
     }
 }
 
 function redirectToDashboard(userType) {
-    const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn')) || false;
-
-    // Check if the user is already logged in
-    if (isLoggedIn) {
-        window.location.href = userType === 'parent' ? 'parent_dashboard.html' : 'kid_dashboard.html';
+    if (getLocalStorageItem('isLoggedIn', false)) {
+        // User is already logged in, redirect to the dashboard
+        redirectTo(userType === 'parent' ? 'parent_dashboard.html' : 'kid_dashboard.html');
     }
 }
 
+// Log out the user
 function handleLogout() {
-    localStorage.setItem('isLoggedIn', JSON.stringify(false));
-    localStorage.removeItem('currentUser');
-    window.location.href = 'index.html';
+    setLocalStorageItem('isLoggedIn', false);
+    removeLocalStorageItem('currentUser');
+    redirectTo('index.html');
 }
 
 function checkLoginStatus() {
-    const isLoggedIn = JSON.parse(localStorage.getItem('isLoggedIn')) || false;
+    const isLoggedIn = getLocalStorageItem('isLoggedIn', false);
+    const buttons = ['.navbar-nav button[data-bs-target="#login"]', '.navbar-nav button[data-bs-target="#register"]', '#hero-intro button[data-bs-target="#register"]'];
 
-    // Select the login and register buttons
-    const loginButton = $('.navbar-nav button[data-bs-target="#login"]');
-    const registerButton = $('.navbar-nav button[data-bs-target="#register"]');
-    const heroRegisterButton = $('#hero-intro button[data-bs-target="#register"]');
+    // Show or hide elements based on login status
+    buttons.forEach(button => $(button).toggle(!isLoggedIn));
 
-    // Show or hide the logout button based on login status
-    if (isLoggedIn) {
-        // User is logged in, hide login and register buttons
-        loginButton.hide();
-        registerButton.hide();
-        heroRegisterButton.hide();
-        $('#logoutBtn').show();
-        $('#tasksBtn').show();
-    } else {
-        // User is not logged in, show login and register buttons
-        loginButton.show();
-        registerButton.show();
-        heroRegisterButton.show();
-        $('#logoutBtn').hide();
-        $('#tasksBtn').hide();
-    }
+    $('#logoutBtn, #tasksBtn').toggle(isLoggedIn);
 }
 
 // Display error messages in the specified modal
@@ -68,26 +45,43 @@ function displayErrorMessage(modalId, message) {
     errorMessageElement.text(message);
 
     // Hide the error message after a few seconds
-    setTimeout(function () {
-        errorMessageElement.text(""); // Clear the message
-    }, 3000); // display time
+    setTimeout(() => errorMessageElement.text(''), 3000);
 }
 
 // Display confirmation messages
 function displayConfirmationMessage(alertElement, message) {
-    alertElement.text(message);
-    alertElement.show();
+    alertElement.text(message).show();
 
     // Hide the confirmation message after a few seconds
-    setTimeout(function () {
-        alertElement.hide();
-    }, 5000); // display time
+    setTimeout(() => alertElement.hide(), 5000);
 }
 
 function getExistingUsers() {
-    return JSON.parse(localStorage.getItem('users')) || [];
+    return getLocalStorageItem('users', []);
 }
 
 function getCurrentUser() {
-    return JSON.parse(localStorage.getItem('currentUser')) || {};
+    return getLocalStorageItem('currentUser', {});
+}
+
+// Helper functions
+function getLocalStorageItem(key, defaultValue) {
+    return JSON.parse(localStorage.getItem(key)) || defaultValue;
+}
+
+function setLocalStorageItem(key, value) {
+    localStorage.setItem(key, JSON.stringify(value));
+}
+
+function removeLocalStorageItem(key) {
+    localStorage.removeItem(key);
+}
+
+function redirectTo(url) {
+    window.location.href = url;
+}
+
+function displayUserSpecificContent(userType) {
+    $('#content').html(`<p>Hello ${userType === 'parent' ? 'Parent' : 'Kid'}</p>`);
+    $('#logoutBtn').show();
 }

@@ -21,10 +21,6 @@ $(document).ready(function () {
     //     });
     // }
 
-    function getExistingUsers() {
-        return JSON.parse(localStorage.getItem('users')) || [];
-    }
-
     function isEmailRegistered(email) {
         const existingUsers = getExistingUsers();
         return existingUsers.some(function (user) {
@@ -69,10 +65,10 @@ $(document).ready(function () {
 
         const existingUsers = getExistingUsers();
         existingUsers.push({ email, password, userType, parentEmail });
-        localStorage.setItem('users', JSON.stringify(existingUsers));
+        setLocalStorageItem('users', existingUsers);
 
-        localStorage.setItem('isLoggedIn', JSON.stringify(true));
-        localStorage.setItem('currentUser', JSON.stringify({ email, userType, parentEmail }));
+        setLocalStorageItem('isLoggedIn', true);
+        setLocalStorageItem('currentUser', { email, userType, parentEmail });
         window.location.href = 'redirectToDashboard.html';
     });
 
@@ -101,8 +97,8 @@ $(document).ready(function () {
         });
 
         if (user) {
-            localStorage.setItem('isLoggedIn', JSON.stringify(true));
-            localStorage.setItem('currentUser', JSON.stringify(user));
+            setLocalStorageItem('isLoggedIn', true)
+            setLocalStorageItem('currentUser', user)
             window.location.href = 'redirectToDashboard.html';
         } else {
             displayErrorMessage('login', 'Invalid email or password. Please try again.');

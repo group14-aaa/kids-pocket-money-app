@@ -2,7 +2,7 @@ $(document).ready(function () {
 
   // Load transaction history to the page
   function loadTransactionHistoryToPage() {
-      const transactionHistory = JSON.parse(localStorage.getItem("transactionHistory")) || [];
+      const transactionHistory = getLocalStorageItem("transactionHistory", []);
       const transactionHistoryContainer = $("#transaction-history-container");
       transactionHistoryContainer.empty();
 
