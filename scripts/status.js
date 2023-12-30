@@ -5,7 +5,7 @@ $(document).ready(function () {
     $('#logoutBtn').on('click', handleLogout);
 
     // Determine the user type based on the current page
-    const userType = getCurrentUser().userType;
+    const userType = window.location.pathname.includes('parent_dashboard') ? 'parent' : 'kid';
 
     checkLoginStatusAndRedirect(userType);
 

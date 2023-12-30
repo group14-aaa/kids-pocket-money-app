@@ -85,3 +85,10 @@ function displayUserSpecificContent(userType) {
     $('#content').html(`<p>Hello ${userType === 'parent' ? 'Parent' : 'Kid'}</p>`);
     $('#logoutBtn').show();
 }
+
+// Displaying the date
+function displayDate() {
+        const now = dayjs();
+        const formattedTime = now.format("dddd, MMMM D");
+        $("#display-Day").text(formattedTime);
+}

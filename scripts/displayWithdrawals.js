@@ -2,9 +2,7 @@ $(document).ready(function () {
 
   // Load withdrawal requests to the parent dashboard
   function loadWithdrawalsToPage() {
-    const currentUser = getCurrentUser();
-    const parentEmail = currentUser.email;
-
+    const parentEmail = getCurrentUser().email;
     const parentWithdrawals = getLocalStorageItem(`withdrawals_${parentEmail}`, []);
 
     const withdrawalContainer = $("#withdrawal-request-container");
@@ -39,13 +37,18 @@ $(document).ready(function () {
     const withdrawalRequest = getLocalStorageItem(withdrawalId);
 
     // Update the status to "Accepted"
-    withdrawalRequest.status = "Accepted";
-    setLocalStorageItem(withdrawalId, withdrawalRequest);
+    updateWithdrawalStatus(withdrawalRequest, "Accepted");
 
     // Move to transaction history
     moveWithdrawalToTransactionHistory(withdrawalRequest);
     loadWithdrawalsToPage();
   });
+
+  // Update withdrawal status
+  function updateWithdrawalStatus(withdrawalRequest, status) {
+    withdrawalRequest.status = status;
+    setLocalStorageItem(withdrawalRequest.id, withdrawalRequest);
+  }
 
   // Move a withdrawal to transaction history
   function moveWithdrawalToTransactionHistory(withdrawalRequest) {
@@ -53,12 +56,11 @@ $(document).ready(function () {
     transactionHistory.push(withdrawalRequest);
     setLocalStorageItem("transactionHistory", transactionHistory)
 
-
     // Remove from parent's withdrawals
     const parentEmail = getCurrentUser().email;
     const parentWithdrawals = getLocalStorageItem(`withdrawals_${parentEmail}`, []);
     const updatedParentWithdrawals = parentWithdrawals.filter(id => id !== withdrawalRequest.id);
-    setLocalStorageItem(`withdrawals_${parentEmail}`, updatedParentWithdrawals)
+    setLocalStorageItem(`withdrawals_${parentEmail}`, updatedParentWithdrawals);
   }
 
   // Load withdrawals on dashboard load
