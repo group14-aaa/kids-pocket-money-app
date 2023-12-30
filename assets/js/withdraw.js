@@ -5,6 +5,7 @@ $(document).ready(function () {
       const kidEmail = getCurrentUser().email;
       const updatedBalance = parseFloat(getLocalStorageItem(`balanceTotal_${kidEmail}`, 0));
       $("#balance-value").text(updatedBalance.toFixed(2));
+      $("#balance-value2").text(updatedBalance.toFixed(2));
   }
 
   // Handle withdrawal form submission
