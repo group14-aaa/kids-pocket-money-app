@@ -56,6 +56,37 @@ $(document).ready(function () {
     });
   });
 
+  
+  ///event lister for skip task button
+  container.on("click", ".task-not-complete-btn", function () {
+    const card = $(this).closest(".col-md-4");
+    const taskValue = card.data("task-value");
+
+    // Open the confirmation modal
+    $("#skipModal").modal("show");
+
+    // Set up the confirm button click event
+    $("#skipTask").off("click").on("click", function () {
+      ///remove task from local storage
+      skipTask(card);
+
+      // Close the confirmation modal
+      $("#skipModal").modal("hide");
+
+      // Remove the click event handler to prevent potential issues
+    $("#skipTask").off("click");
+  });
+   
+      // Set up the cancel button click event
+      $("#skipTask").off("click").on("click", function () {
+        // Close the confirmation modal
+        $("#skipModal").modal("hide");
+     
+
+    });
+  });
+
+
   // Function to display a gif on completed task
   function displayGif(card) {
     // Create a new card for the Giphy gif
@@ -132,6 +163,34 @@ $(document).ready(function () {
     // Reload tasks on the page
     loadTasksToPage();
   }
+
+
+//function to delete task from local storage if skipped 
+function skipTask(card) {
+  // Get the task ID from the card
+  const taskId = card.find(".task-not-complete-btn").data("task-id");
+
+  // Get the logged-in kid's email
+  const currentUser = getCurrentUser();
+  const kidEmail = currentUser.email;
+
+  // Remove the task from local storage
+  const tasks = JSON.parse(localStorage.getItem(taskId)) || [];
+  const remainingAssignedKids = tasks.assignedKids.filter(kid => kid !== kidEmail);
+
+  if (remainingAssignedKids.length === 0) {
+    // Remove the task from local storage if no other kids are assigned
+    localStorage.removeItem(taskId);
+  } else {
+    // Update the task with remaining assigned kids
+    tasks.assignedKids = remainingAssignedKids;
+    localStorage.setItem(taskId, JSON.stringify(tasks));
+  }
+
+  // Reload tasks on the page
+  loadTasksToPage();
+}
+
 
   // Calculate Balance and store in local storage for each kid
   function calculateBalance(taskValue, kidEmail) {
