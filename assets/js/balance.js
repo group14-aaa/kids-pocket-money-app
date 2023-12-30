@@ -56,7 +56,7 @@ $(document).ready(function () {
     });
   });
 
-  
+
   ///event lister for skip task button
   container.on("click", ".task-not-complete-btn", function () {
     const card = $(this).closest(".col-md-4");
@@ -76,16 +76,15 @@ $(document).ready(function () {
       // Remove the click event handler to prevent potential issues
     $("#skipTask").off("click");
   });
-   
+
       // Set up the cancel button click event
       $("#skipTask").off("click").on("click", function () {
         // Close the confirmation modal
         $("#skipModal").modal("hide");
-     
+
 
     });
   });
-
 
   // Function to display a gif on completed task
   function displayGif(card) {
@@ -112,26 +111,6 @@ $(document).ready(function () {
         moveTaskToHistory(card);
       }, displayDuration);
     });
-  }
-
-  // Gihpy API
-  async function callGiphyApi() {
-    const queryURL =
-      "https://api.giphy.com/v1/gifs/random?api_key=Kz3LZ6By1ZZOjvwM38fgfFUgDljuq6hl&tag=dance&rating=pg";
-
-    try {
-      const response = await fetch(queryURL);
-      const data = await response.json();
-
-      // Get the image from the API
-      let giphyUrl = data.data.images.fixed_height.url;
-      return giphyUrl;
-
-    } catch (error) {
-
-      console.error("Error fetching data from Giphy API:", error);
-      throw error;
-    }
   }
 
   function moveTaskToHistory(card) {
@@ -164,8 +143,7 @@ $(document).ready(function () {
     loadTasksToPage();
   }
 
-
-//function to delete task from local storage if skipped 
+//function to delete task from local storage if skipped
 function skipTask(card) {
   // Get the task ID from the card
   const taskId = card.find(".task-not-complete-btn").data("task-id");
@@ -190,7 +168,6 @@ function skipTask(card) {
   // Reload tasks on the page
   loadTasksToPage();
 }
-
 
   // Calculate Balance and store in local storage for each kid
   function calculateBalance(taskValue, kidEmail) {
