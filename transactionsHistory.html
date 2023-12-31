@@ -9,8 +9,8 @@
       rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Parent Dashboard</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <title>Transaction History</title>
   </head>
   <body>
     <!-- HEADER -->
@@ -39,16 +39,40 @@
                 <a class="nav-link" href="./">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Today</a>
+                <a class="nav-link" href="./redirectToDashboard.html">Tasks</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Week</a>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Calendar
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">Week</a></li>
+                  <li><a class="dropdown-item" href="#">Month</a></li>
+                </ul>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Tasks History</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./transaction_history.html">Withdraw History</a>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  History
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Tasks</a></li>
+                  <li>
+                    <a class="dropdown-item" href="./transaction_history.html"
+                      >Withdrawals</a
+                    >
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
                 <button class="nav-link btn btn-primary" id="logoutBtn">
@@ -62,14 +86,13 @@
     </header>
     <!-- MAIN -->
     <main class="content">
-        <div class="container mt-5">
-            <h2>Transaction History</h2>
+      <div class="container mt-5">
+        <h2>Transaction History</h2>
 
-            <div class="row" id="transaction-history-container">
-              <!-- Transaction history items will be dynamically added here -->
-            </div>
-          </div>
-
+        <div class="row" id="transaction-history-container">
+          <!-- Transaction history items will be dynamically added here -->
+        </div>
+      </div>
     </main>
 
     <!-- FOOTER -->
@@ -84,12 +107,10 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <!-- <script src="./assets/js/status.js"></script> -->
-    <script src="./assets/js/transaction_history.js"></script>
-    <script src="./assets/js/utils.js"></script>
-    <script src="./assets/js/scripts.js"></script>
+    <script src="./scripts/status.js"></script>
+    <script src="./scripts/utils.js"></script>
+    <script src="./scripts/displayWithdrawalsHistory.js"></script>
 
-
-
+    <script src="./scripts/scripts.js"></script>
   </body>
 </html>

@@ -3,8 +3,9 @@ $(document).ready(function () {
   // Display current balance for the kid
   function updateDisplayBalance() {
       const kidEmail = getCurrentUser().email;
-      const updatedBalance = parseFloat(localStorage.getItem(`balanceTotal_${kidEmail}`)) || 0;
+      const updatedBalance = parseFloat(getLocalStorageItem(`balanceTotal_${kidEmail}`, 0));
       $("#balance-value").text(updatedBalance.toFixed(2));
+      $("#balance-value2").text(updatedBalance.toFixed(2));
   }
 
   // Handle withdrawal form submission
@@ -21,7 +22,7 @@ $(document).ready(function () {
           return;
       }
 
-      let kidCurrentBalance = parseFloat(localStorage.getItem(`balanceTotal_${kidEmail}`)) || 0;
+      let kidCurrentBalance = parseFloat(getLocalStorageItem(`balanceTotal_${kidEmail}`, 0));
 
       if (withdrawValue > kidCurrentBalance) {
           displayErrorMessage("withdraw-modal", "Insufficient funds for withdrawal.");
@@ -30,7 +31,7 @@ $(document).ready(function () {
 
       // Update balance and save withdrawal request
       kidCurrentBalance -= withdrawValue;
-      localStorage.setItem(`balanceTotal_${kidEmail}`, kidCurrentBalance.toFixed(2));
+      setLocalStorageItem(`balanceTotal_${kidEmail}`, kidCurrentBalance.toFixed(2))
       updateDisplayBalance();
 
       const transactionId = generateTransactionId();
@@ -57,14 +58,15 @@ $(document).ready(function () {
   function saveWithdrawalRequest(transactionId, withdrawalRequest) {
       saveTransactionForUser(`withdrawals_${withdrawalRequest.kidEmail}`, transactionId);
       saveTransactionForUser(`withdrawals_${withdrawalRequest.parentEmail}`, transactionId);
-      localStorage.setItem(transactionId, JSON.stringify(withdrawalRequest));
+      setLocalStorageItem(transactionId, withdrawalRequest);
   }
 
   // Save transaction ID for user
   function saveTransactionForUser(storageKey, transactionId) {
-      const userTransactions = JSON.parse(localStorage.getItem(storageKey)) || [];
+      const userTransactions = getLocalStorageItem(storageKey, []);
+
       userTransactions.push(transactionId);
-      localStorage.setItem(storageKey, JSON.stringify(userTransactions));
+      setLocalStorageItem(storageKey, userTransactions);
   }
 
   // Event listener for withdrawal submission

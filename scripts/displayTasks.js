@@ -51,7 +51,7 @@ function getTasksFromLocalStorage() {
   for (let i = 0; i < localStorage.length; i++) {
     const key = localStorage.key(i);
     if (key.includes("task")) {
-      const task = JSON.parse(localStorage.getItem(key));
+      const task = getLocalStorageItem(key)
       // Check if the logged-in kid's email is in the task's assigned kids list
       if (task.assignedKids && task.assignedKids.includes(currentUser.email)) {
         tasks.push(task);

@@ -9,7 +9,7 @@
       rel="stylesheet"
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
     <title>Kid Dashboard</title>
   </head>
 
@@ -39,23 +39,46 @@
               <li class="nav-item">
                 <a class="nav-link" href="./">Home</a>
               </li>
-
               <li class="nav-item">
-                <a class="nav-link" href="./balance.html">Withdraw</a>
+                <a class="nav-link" href="./kid_dashboard.html">To do Tasks</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Calendar
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">Week</a></li>
+                  <li><a class="dropdown-item" href="#">Month</a></li>
+                </ul>
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  History
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Tasks</a></li>
+                  <li>
+                    <a class="dropdown-item" href="./transactionsHistory.html"
+                      >Withdrawals</a
+                    >
+                  </li>
+                </ul>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./redirectToDashboard.html">Tasks</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Tasks History</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="./transaction_history.html">Withdraw History</a>
-              </li>
-              <li class="nav-item">
-                <p class="nav-balance">
+                <a class="nav-balance nav-link" href="./balance.html">
                   Balance: <span id="balance-value">0.00</span> £
-                </p>
+                </a>
               </li>
               <li class="nav-item">
                 <button class="nav-link btn btn-primary" id="logoutBtn">
@@ -107,8 +130,8 @@
         </div>
       </div>
 
-       <!-- Skip Task -->
-       <div class="modal" id="skipModal" tabindex="-1" role="dialog">
+      <!-- Skip Task -->
+      <div class="modal" id="skipModal" tabindex="-1" role="dialog">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="container m-0">
@@ -118,11 +141,17 @@
               </div>
 
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="skipTask">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  id="cancelSkipTask">
                   Cancel
                 </button>
 
-                <button type="button" class="btn btn-primary" id="skipTask">
+                <button
+                  type="button"
+                  class="btn btn-primary"
+                  id="confirmSkipTask">
                   Confirm
                 </button>
               </div>
@@ -149,12 +178,12 @@
       integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
       crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <script src="./assets/js/status.js"></script>
-    <script src="./assets/js/utils.js"></script>
-    <script src="./assets/js/api.js"></script>
-    <script src="./assets/js/balance.js"></script>
-    <script src="./assets/js/add_tasks.js"></script>
-    <script src="./assets/js/show_tasks.js"></script>
-    <script src="./assets/js/scripts.js"></script>
+    <script src="./scripts/status.js"></script>
+    <script src="./scripts/utils.js"></script>
+    <script src="./scripts/api.js"></script>
+    <script src="./scripts/balance.js"></script>
+    <script src="./scripts/addTasks.js"></script>
+    <script src="./scripts/displayTasks.js"></script>
+    <script src="./scripts/scripts.js"></script>
   </body>
 </html>

@@ -44,13 +44,13 @@ $(document).ready(function () {
   }
 
   function saveTask(taskId, task) {
-    localStorage.setItem(taskId, JSON.stringify(task));
+    setLocalStorageItem(taskId, task);
 
     // Assign the task to each selected kid
     task.assignedKids.forEach(kidEmail => {
-      const kidTasks = JSON.parse(localStorage.getItem(kidEmail)) || [];
+      const kidTasks = getLocalStorageItem(kidEmail, []);
       kidTasks.push(taskId);
-      localStorage.setItem(kidEmail, JSON.stringify(kidTasks));
+      setLocalStorageItem(kidEmail, kidTasks)
     });
   }
 
