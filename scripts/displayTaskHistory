@@ -1,0 +1,85 @@
+$(document).ready(function () {
+
+    getTasksFromLocalStorage();
+
+
+    console.log (tasks);
+  }
+  
+
+git a
+    
+
+    // function getTaskHistory(){
+
+
+
+    //if local storage 
+
+    // const kidStoredTasks = JSON.parse(currentUser.localStorage.getItem('kidTasks'));
+
+
+    // // Get parent-kid association
+    // if (currentUser.userType === 'parent' && currentUser.parentEmail === '') {
+    //     const parentEmail = currentUser.email;
+    //     const associatedKids = existingUsers.filter(kid => kid.parentEmail === parentEmail);
+
+    
+    //     
+  
+    //     if (associatedKids.length === 0) {
+    //       const noKidsAvailable = `<h4 class="text-center">No kids available<h3/>`
+    //       associationList.append(noKidsAvailable);
+    //     }
+  
+    //     if (associatedKids.length > 0) {
+    //       // Iterate through associatedKids and retrieve tasks from local storage
+    //       associatedKids.forEach(kid => {
+
+    //         //
+
+
+    //       });
+    //     }
+
+
+//       }
+    
+
+
+// getTaskHistory();
+
+  // Load transaction history to the page
+//   function loadTransactionHistoryToPage() {
+//       const transactionHistory = getLocalStorageItem("transactionHistory", []);
+//       const transactionHistoryContainer = $("#transaction-history-container");
+//       transactionHistoryContainer.empty();
+
+//       const currentUser = getCurrentUser();
+
+//       transactionHistory.forEach(transaction => {
+//           if (currentUser.email === transaction.parentEmail || currentUser.email === transaction.kidEmail) {
+//               displayTransaction(transaction);
+//           }
+//       });
+//   }
+
+  // Display a transaction card
+//   function displayTransaction(transaction) {
+//       const cardTemplate = `
+//           <div class="col-md-4">
+//               <div class="card mb-4">
+//                   <div class="card-body">
+//                       <h5 class="card-title">Transaction Details</h5>
+//                       <p>Kid: ${transaction.kidEmail}</p>
+//                       <p>Amount: £${transaction.amount.toFixed(2)}</p>
+//                       <p>Status: ${transaction.status}</p>
+//                   </div>
+//               </div>
+//           </div>`;
+//       $("#transaction-history-container").append(cardTemplate);
+//   }
+
+  // Load transaction history on document ready
+
+});
