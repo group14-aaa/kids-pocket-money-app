@@ -10,9 +10,8 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous" />
     <link rel="stylesheet" href="./css/style.css" />
-    <title>Kid Dashboard</title>
+    <title>Task History</title>
   </head>
-
   <body>
     <!-- HEADER -->
     <header>
@@ -40,7 +39,7 @@
                 <a class="nav-link" href="./">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./kid_dashboard.html">To do Tasks</a>
+                <a class="nav-link" href="./redirectToDashboard.html">Tasks</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -69,16 +68,11 @@
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="./taskHistory.html">Tasks</a></li>
                   <li>
-                    <a class="dropdown-item" href="./transactionsHistory.html"
+                    <a class="dropdown-item" href="./transaction_history.html"
                       >Withdrawals</a
                     >
                   </li>
                 </ul>
-              </li>
-              <li class="nav-item">
-                <a class="nav-balance nav-link" href="./balance.html">
-                  Balance: £<span id="balance-value">0.00</span> 
-                </a>
               </li>
               <li class="nav-item">
                 <button class="nav-link btn btn-primary" id="logoutBtn">
@@ -90,73 +84,13 @@
         </div>
       </nav>
     </header>
-
     <!-- MAIN -->
     <main class="content">
-      <div class="text-center p-4">
-        <h3 id="display-Day"></h3>
-      </div>
-      <div id="quote" class="fst-italic text-center m-8"></div>
+      <div class="container mt-5">
+        <h2>Task History</h2>
 
-      <!-- Task to do section -->
-      <div class="container mt-4">
-        <h2>Tasks To Do List</h2>
-
-        <div class="row" id="task-card-container">
-          <!-- Task cards added here -->
-        </div>
-      </div>
-      <!-- Confirm Task -->
-      <div class="modal" id="confirmationModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="container m-0">
-              <h2>Confirmation</h2>
-              <div class="modal-body">
-                <p>Are you sure you want to mark this task as done?</p>
-              </div>
-
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="cancelTask">
-                  Cancel
-                </button>
-
-                <button type="button" class="btn btn-primary" id="confirmTask">
-                  Confirm
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Skip Task -->
-      <div class="modal" id="skipModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="container m-0">
-              <h2>Skip Task</h2>
-              <div class="modal-body">
-                <p>Are you sure you want to skip this task?</p>
-              </div>
-
-              <div class="modal-footer">
-                <button
-                  type="button"
-                  class="btn btn-secondary"
-                  id="cancelSkipTask">
-                  Cancel
-                </button>
-
-                <button
-                  type="button"
-                  class="btn btn-primary"
-                  id="confirmSkipTask">
-                  Confirm
-                </button>
-              </div>
-            </div>
-          </div>
+        <div class="row" id="task-history-container">
+          <!-- Task history items will be dynamically added here -->
         </div>
       </div>
     </main>
@@ -165,11 +99,6 @@
     <footer>
       <span>2023 Kids Pocket Money App</span>
     </footer>
-
-    <!--Font Awesome Icons-->
-    <script
-      src="https://kit.fontawesome.com/16f53945bb.js"
-      crossorigin="anonymous"></script>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"></script>
@@ -180,10 +109,9 @@
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="./scripts/status.js"></script>
     <script src="./scripts/utils.js"></script>
-    <script src="./scripts/api.js"></script>
-    <script src="./scripts/balance.js"></script>
     <script src="./scripts/addTasks.js"></script>
     <script src="./scripts/displayTasks.js"></script>
+    <script src="./scripts/displayTaskHistory"></script>
     <script src="./scripts/scripts.js"></script>
   </body>
 </html>
