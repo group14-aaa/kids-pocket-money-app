@@ -1,16 +1,13 @@
-$(document).ready(function () {
-
-    ///get current user. 
+///get current user. 
     ///If user = kid, then get local storage history for the kid, display task history to history html page
     //if user = parent, then get parent kid association, then get local storage for any kids and display on history html page
     //
 
-//getting history from local storage?
-    const userTaskHistory = getLocalStorageItem(`taskHistory_${kidEmail}`, []);
-    userTaskHistory.push(taskId);
-    setLocalStorageItem(`taskHistory_${kidEmail}`, userTaskHistory)
 
-    
+    $(document).ready(function () {
+
+        //get kid-email 
+ 
     // Get parent-kid association //ammend
     // if (currentUser.userType === 'parent' && currentUser.parentEmail === '') {
     //     const parentEmail = currentUser.email;
