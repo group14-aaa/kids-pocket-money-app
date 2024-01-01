@@ -1,13 +1,31 @@
-///get current user. 
+    ///get current user. 
     ///If user = kid, then get local storage history for the kid, display task history to history html page
     //if user = parent, then get parent kid association, then get local storage for any kids and display on history html page
-    //
-
-
     $(document).ready(function () {
+        // Get kid-email
+        const kidEmail = getCurrentUser().email;
+      
+        // Getting history from local storage
+        const userTaskHistory = getLocalStorageItem(`taskHistory_${kidEmail}`);
+      
+        if (userTaskHistory.length > 0) {
+          // Iterate through user task history and retrieve tasks from local storage
+          userTaskHistory.forEach(taskId => {
+            const task = getLocalStorageItem(taskId);
+      
+            if (task) {
+              // Access task properties
+              const taskName = task.name;
+              const taskValue = task.value;
+      
+              console.log(taskName);
+              console.log(taskValue);
+            }
+          });
+        }
+      });
 
-        //get kid-email 
- 
+
     // Get parent-kid association //ammend
     // if (currentUser.userType === 'parent' && currentUser.parentEmail === '') {
     //     const parentEmail = currentUser.email;
@@ -22,20 +40,9 @@
     //       // Iterate through associatedKids and retrieve tasks from local storage
     //       associatedKids.forEach(kid => {
 
-    //         //
-
-
     //       });
     //     }
-    //   }
-
-
-
-    // function getTaskHistory(){
-
-    // const kidStoredTasks = JSON.parse(currentUser.localStorage.getItem('kidTasks'));
-
-  
+    
 
 
 // getTaskHistory();
@@ -72,4 +79,4 @@
 //   }
 
 
-});
+
