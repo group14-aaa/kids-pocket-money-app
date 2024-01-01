@@ -24,8 +24,17 @@ $(document).ready(function () {
             return 'Passwords do not match.';
         }
 
-        if (userType === 'kid' && !parentEmail) {
-            return 'Parent\'s email is required for kid registration.';
+        if (userType === 'kid') {
+            if (!parentEmail) {
+                return 'Parent\'s email is required for kid registration.';
+            }
+
+            const existingUsers = getExistingUsers();
+            const isParentEmailRegistered = existingUsers.some(user => user.email === parentEmail);
+
+            if (!isParentEmailRegistered) {
+                return 'Parent\'s email is not registered. Please use a different parent\'s email.';
+            }
         }
 
         if (isEmailRegistered(email)) {
@@ -63,7 +72,7 @@ $(document).ready(function () {
 
         setLocalStorageItem('isLoggedIn', true);
         setLocalStorageItem('currentUser', { email, userType, parentEmail });
-        window.location.href = 'redirectToDashboard.html';
+        window.location.href = 'dashboard.html';
     }
 
     function handleLogin(event) {
@@ -84,7 +93,7 @@ $(document).ready(function () {
         if (user) {
             setLocalStorageItem('isLoggedIn', true);
             setLocalStorageItem('currentUser', user);
-            window.location.href = 'redirectToDashboard.html';
+            window.location.href = 'dashboard.html';
         } else {
             displayErrorMessage('login', 'Invalid email or password. Please try again.');
         }
@@ -96,5 +105,18 @@ $(document).ready(function () {
 
     $userTypeInput.on('change', function () {
         $parentEmailInput.toggle($userTypeInput.filter(':checked').val() === 'kid');
+    });
+
+    // Initial check on page load
+    $('#parentEmailInput').toggle($('#kidRadio').is(':checked'));
+
+    // Toggle when Kid radio is changed
+    $(document).on('change', '#kidRadio', function () {
+        $('#parentEmailInput').toggle(this.checked);
+    });
+
+    // Hide when Parent radio is checked
+    $(document).on('change', '#parentRadio', function () {
+        $('#parentEmailInput').hide();
     });
 });
