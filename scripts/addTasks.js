@@ -100,6 +100,8 @@ $(document).ready(function () {
     // Show confirmation message
     displayConfirmationMessage(confirmationAlert, "Task added successfully!");
 
+    displayActiveTasksForParent();
+
     // Clear form inputs after submission
     taskForm[0].reset();
   });
@@ -128,5 +130,75 @@ $(document).ready(function () {
   $("#task-modal").on("hidden.bs.modal", function () {
     taskForm[0].reset();
   });
+
+  function displayActiveTasksForParent() {
+    const currentUser = getCurrentUser();
+    const taskContainerParent = $("#task-card-container-parent");
+
+    // Clear previous tasks
+    taskContainerParent.empty();
+
+    if (currentUser.userType === 'parent') {
+      const associatedKids = getExistingUsers().filter(kid => kid.parentEmail === currentUser.email);
+
+      let allTasks = [];
+
+      associatedKids.forEach(kid => {
+        const kidTasks = getLocalStorageItem(kid.email, []);
+        const kidHistoryTasks = getLocalStorageItem(`taskHistory_${kid.email}`, []);
+
+        // Filter tasks that are not in the kid's history
+        const filteredKidTasks = kidTasks.filter(taskId => {
+          // Check if the taskId exists in kidHistoryTasks
+          return !kidHistoryTasks.some(historyItem => historyItem.taskId === taskId);
+        });
+
+        filteredKidTasks.forEach(taskId => {
+          const task = getLocalStorageItem(taskId);
+
+          if (task) {
+            allTasks.push({
+              kidEmail: kid.email,
+              taskName: task.name,
+              taskValue: task.value.toFixed(2),
+              date: task.date
+            });
+          }
+        });
+      });
+
+      // Sort tasks by date in descending order
+      allTasks.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+      // Append sorted tasks to the container
+      allTasks.forEach(task => {
+        const formattedDateTime = dayjs(task.date).format('MMMM D, YYYY - h:mm A');
+
+        const taskInfo = `
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-md-3"><strong>Kid Email:</strong> ${task.kidEmail}</div>
+                        <div class="col-md-3"><strong>Task Name:</strong> ${task.taskName}</div>
+                        <div class="col-md-3"><strong>Task Value:</strong> £${task.taskValue}</div>
+                        <div class="col-md-3"><strong>Added Date:</strong> ${formattedDateTime}</div>
+                    </div>
+                </li>
+            `;
+        taskContainerParent.append(taskInfo);
+      });
+
+      // Check if there are no tasks and display a message
+      if (taskContainerParent.children().length === 0) {
+        const noTaskMessage = `
+                <div class="col-12 text-center mt-3">
+                    <p>No active tasks available</p>
+                </div>
+            `;
+        taskContainerParent.append(noTaskMessage);
+      }
+    }
+  }
+
+  displayActiveTasksForParent()
 
 });

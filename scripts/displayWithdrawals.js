@@ -1,5 +1,4 @@
 $(document).ready(function () {
-
   // Load withdrawal requests to the parent dashboard
   function loadWithdrawalsToPage() {
     const parentEmail = getCurrentUser().email;
