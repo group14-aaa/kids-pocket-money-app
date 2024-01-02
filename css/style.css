@@ -140,6 +140,10 @@ p, h2, h3 {
   background-color: #388e3c; /* Slightly darker shade on hover */
 }
 
+.btn-secondary:hover {
+  background-color: #ff412e; /* Slightly darker shade on hover */
+}
+
 /* Navigation styles */
 .navbar {
   background-color: var(--primary-color);
