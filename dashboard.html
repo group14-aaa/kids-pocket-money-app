@@ -76,14 +76,13 @@
               </li>
               <li class="nav-item header-balance">
                 <!-- Withdraw Modal button  -->
-            <button
-            type="button"
-            class="btn btn-primary nav-balance nav-link"
-            data-bs-toggle="modal"
-            data-bs-target="#withdraw-modal">
-            Balance: <span id="balance-value">0.00</span> £
-          </button>
-
+                <button
+                  type="button"
+                  class="btn btn-primary nav-balance nav-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#withdraw-modal">
+                  Balance: <span id="balance-value">0.00</span> £
+                </button>
               </li>
               <li class="nav-item">
                 <button class="nav-link btn btn-primary" id="logoutBtn">
@@ -196,9 +195,16 @@
 
         <!-- Task List -->
         <div class="container mt-4">
-          <h2>Kid's Task List</h2>
+          <h2>Kid's Active Task List</h2>
 
-          <div class="row" id="task-card-container">
+          <div class="row" id="task-card-container-parent">
+            <!-- Task cards added here -->
+          </div>
+        </div>
+        <div class="container mt-4">
+          <h2>Kid's Task History</h2>
+
+          <div class="row" id="task-history-container">
             <!-- Task cards added here -->
           </div>
         </div>
@@ -217,6 +223,13 @@
           <h2>Tasks To Do List</h2>
 
           <div class="row" id="task-card-container">
+            <!-- Task cards added here -->
+          </div>
+        </div>
+        <div class="container mt-4">
+          <h2>Tasks History</h2>
+
+          <div class="row" id="task-history-container">
             <!-- Task cards added here -->
           </div>
         </div>
@@ -347,10 +360,10 @@
     <script src="./scripts/status.js"></script>
     <script src="./scripts/utils.js"></script>
     <script src="./scripts/api.js"></script>
+    <script src="./scripts/displayTaskHistory.js"></script>
     <script src="./scripts/kidWallet.js"></script>
     <script src="./scripts/addTasks.js"></script>
     <script src="./scripts/displayWithdrawals.js"></script>
     <script src="./scripts/main.js"></script>
-
   </body>
 </html>

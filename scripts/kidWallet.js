@@ -82,14 +82,17 @@ $(document).ready(function () {
         const taskId = card.find(".task-done-button").data("task-id");
         const remainingAssignedKids = updateAssignedKids(taskId);
 
-        if (remainingAssignedKids.length === 0) {
-            removeLocalStorageItem(taskId);
-        } else {
-            updateTaskAssignedKids(taskId, remainingAssignedKids);
-        }
+        // if (remainingAssignedKids.length === 0) {
+        //     removeLocalStorageItem(taskId);
+        // } else {
+        updateTaskAssignedKids(taskId, remainingAssignedKids);
+        // }
 
-        updateTaskHistory(taskId);
+        // updateTaskHistory(taskId);
+        // Update task history with date and time
+        updateTaskHistory(taskId, dayjs().format());
         loadTasksToPage();
+        displayTaskHistory();
     }
 
     function updateAssignedKids(taskId) {
@@ -103,24 +106,28 @@ $(document).ready(function () {
         setLocalStorageItem(taskId, tasks);
     }
 
-    function updateTaskHistory(taskId) {
+    function updateTaskHistory(taskId, dateTime) {
         const userTaskHistory = getLocalStorageItem(`taskHistory_${kidEmail}`, []);
-        userTaskHistory.push(taskId);
+        userTaskHistory.push({ taskId, dateTime });
         setLocalStorageItem(`taskHistory_${kidEmail}`, userTaskHistory);
     }
+
 
     function skipTask(card) {
         const taskId = card.find(".task-done-button").data("task-id");
         const remainingAssignedKids = updateAssignedKids(taskId);
 
-        if (remainingAssignedKids.length === 0) {
-            removeLocalStorageItem(taskId);
-        } else {
-            updateTaskAssignedKids(taskId, remainingAssignedKids);
-        }
+        // if (remainingAssignedKids.length === 0) {
+        //     removeLocalStorageItem(taskId);
+        // } else {
+        updateTaskAssignedKids(taskId, remainingAssignedKids);
+        // }
 
-        updateTaskHistory(taskId);
+        // updateTaskHistory(taskId);
+        // Update task history with date and time
+        updateTaskHistory(taskId, dayjs().format());
         loadTasksToPage();
+        displayTaskHistory();
     }
 
     function calculateBalance(taskValue) {
@@ -197,10 +204,10 @@ $(document).ready(function () {
         if (tasks.length === 0) {
             // Display a message when no tasks are available
             const noTaskMessage = `
-                <div class="col-12 text-center mt-3">
-                    <p>No tasks available</p>
-                </div>
-            `;
+            <div class="col-12 text-center mt-3">
+                <p>No tasks available</p>
+            </div>
+        `;
             taskCardContainer.append(noTaskMessage);
         } else {
             // Sort tasks in reverse order (newest first)
@@ -208,20 +215,22 @@ $(document).ready(function () {
 
             // Loop to create Bootstrap cards for each task
             tasks.forEach(function (task, i) {
-                // Check if task properties exist before displaying
+                const formattedDateTime = dayjs(task.date).format('MMMM D, YYYY h:mm A');
+
                 const card = `
                 <div class="col-md-4 mb-4" data-task-value="${task.value}">
-                  <div class="card">
-                    <div class="card-body">
-                      <h5 class="card-title">${task.name || 'N/A'}</h5>
-                      <p class="card-text">${task.description || 'N/A'}</p>
-                      <p class="card-text">Value: £${task.value || 'N/A'}</p>
-                      <button type="submit" class="btn btn-primary task-done-button" data-task-id="${task.id}">Done</button>
-                      <button class="btn-secondary task-not-complete-btn">Skip</button>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">${task.name || 'N/A'}</h5>
+                            <p class="card-text">${task.description || 'N/A'}</p>
+                            <p class="card-text">Value: £${task.value || 'N/A'}</p>
+                            <p class="card-text">Added Date: ${formattedDateTime}</p>
+                            <button type="submit" class="btn btn-primary task-done-button" data-task-id="${task.id}">Done</button>
+                            <button class="btn-secondary task-not-complete-btn">Skip</button>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              `;
+            `;
                 taskCardContainer.append(card);
             });
         }
@@ -248,4 +257,5 @@ $(document).ready(function () {
 
     // Load tasks to the page on initial page load
     loadTasksToPage();
+    displayTaskHistory();
 });
