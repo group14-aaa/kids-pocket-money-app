@@ -1,35 +1,34 @@
 // Check if the user is logged and redirect
 function checkLoginStatusAndRedirect(userType) {
     const isLoggedIn = getLocalStorageItem('isLoggedIn', false);
-    const currentUser = getCurrentUser();
 
     if (!isLoggedIn) {
         // User is not logged in, redirect to index.html
         redirectTo('index.html');
-    } else if (currentUser.userType === userType) {
+    } else if (userType === 'parent' || userType === 'kid') {
         // User is logged in and has the correct user type
         displayUserSpecificContent(userType);
     } else {
-        // Redirect to appropriate dashboard for unauthorized access
-        redirectTo(userType === 'parent' ? 'kid_dashboard.html' : 'parent_dashboard.html');
+        redirectTo('index.html');
     }
 }
 
-function redirectToDashboard(userType) {
-    if (getLocalStorageItem('isLoggedIn', false)) {
-        // User is already logged in, redirect to the dashboard
-        redirectTo(userType === 'parent' ? 'parent_dashboard.html' : 'kid_dashboard.html');
+// Display content based on user type
+function displayUserSpecificContent(userType) {
+    if (userType === 'parent') {
+        $('.header-balance').remove();
+        $('.content-kid').remove();
+        $('.content-parent').show();
+    } else if (userType === 'kid') {
+        $('.content-parent').remove();
+        $('.content-kid').show();
+        $('.header-balance').show();
     }
+    $('#logoutBtn').show();
 }
 
-// Log out the user
-function handleLogout() {
-    setLocalStorageItem('isLoggedIn', false);
-    removeLocalStorageItem('currentUser');
-    redirectTo('index.html');
-}
-
-function checkLoginStatus() {
+// Display UI elements based on Login Status
+function updateUIBasedOnLoginStatus() {
     const isLoggedIn = getLocalStorageItem('isLoggedIn', false);
     const buttons = ['.navbar-nav button[data-bs-target="#login"]', '.navbar-nav button[data-bs-target="#register"]', '#hero-intro button[data-bs-target="#register"]'];
 
@@ -37,6 +36,13 @@ function checkLoginStatus() {
     buttons.forEach(button => $(button).toggle(!isLoggedIn));
 
     $('#logoutBtn, #tasksBtn').toggle(isLoggedIn);
+}
+
+// Log out the user
+function handleLogout() {
+    setLocalStorageItem('isLoggedIn', false);
+    removeLocalStorageItem('currentUser');
+    redirectTo('index.html');
 }
 
 // Display error messages in the specified modal
@@ -56,6 +62,14 @@ function displayConfirmationMessage(alertElement, message) {
     setTimeout(() => alertElement.hide(), 5000);
 }
 
+// Displaying the date
+function displayDate() {
+    const now = dayjs();
+    const formattedTime = now.format("dddd, MMMM D");
+    $("#display-day").text(formattedTime);
+}
+
+//-- Helper functions --//
 function getExistingUsers() {
     return getLocalStorageItem('users', []);
 }
@@ -64,7 +78,6 @@ function getCurrentUser() {
     return getLocalStorageItem('currentUser', {});
 }
 
-// Helper functions
 function getLocalStorageItem(key, defaultValue) {
     return JSON.parse(localStorage.getItem(key)) || defaultValue;
 }
@@ -79,16 +92,4 @@ function removeLocalStorageItem(key) {
 
 function redirectTo(url) {
     window.location.href = url;
-}
-
-function displayUserSpecificContent(userType) {
-    $('#content').html(`<p>Hello ${userType === 'parent' ? 'Parent' : 'Kid'}</p>`);
-    $('#logoutBtn').show();
-}
-
-// Displaying the date
-function displayDate() {
-        const now = dayjs();
-        const formattedTime = now.format("dddd, MMMM D");
-        $("#display-Day").text(formattedTime);
 }
