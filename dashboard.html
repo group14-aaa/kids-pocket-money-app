@@ -81,7 +81,7 @@
                   class="btn btn-primary nav-balance nav-link"
                   data-bs-toggle="modal"
                   data-bs-target="#withdraw-modal">
-                  Balance: <span id="balance-value">0.00</span> £
+                  Balance: £<span id="balance-value">0.00</span> 
                 </button>
               </li>
               <li class="nav-item">
@@ -196,14 +196,28 @@
         <!-- Task List -->
         <div class="container mt-4">
           <h2>Kid's Active Task List</h2>
+          <li class="list-group-item">
+            <div class="row table-secondary">
+            <div class="col-md-3 text-center"><strong>Child Email</strong> </div>
+            <div class="col-md-3 text-center"><strong>Task Name</strong></div>
+            <div class="col-md-3 text-center"><strong>Task Value</strong></div>
+            <div class="col-md-3 text-center"><strong>Time Added</strong></div>
+        </div>
+
 
           <div class="row" id="task-card-container-parent">
             <!-- Task cards added here -->
           </div>
         </div>
         <div class="container mt-4">
-          <h2>Kid's Task History</h2>
+          <h2 >Kid's Task History</h2>
 
+          <div class="row">
+            <div class="col-md-3 text-center"><strong>Child Email</strong> </div>
+            <div class="col-md-3 text-center"><strong>Task Name</strong></div>
+            <div class="col-md-3 text-center"><strong>Task Value</strong></div>
+            <div class="col-md-3 text-center"><strong>Time Complete</strong></div>
+        </div>
           <div class="row" id="task-history-container">
             <!-- Task cards added here -->
           </div>
@@ -367,3 +381,4 @@
     <script src="./scripts/main.js"></script>
   </body>
 </html>
+

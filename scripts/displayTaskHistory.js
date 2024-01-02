@@ -52,11 +52,12 @@ function displayTaskHistory() {
     allTasks.forEach(task => {
         const taskInfo = `
             <li class="list-group-item">
+            
                 <div class="row">
-                    ${isParent ? `<div class="col-md-3"><strong>Kid Email:</strong> ${task.kidEmail}</div>` : ''}
-                    <div class="col-md-3"><strong>Task Name:</strong> ${task.taskName}</div>
-                    <div class="col-md-3"><strong>Task Value:</strong> £${task.taskValue}</div>
-                    <div class="col-md-3"><strong>Finished Date:</strong> ${dayjs(task.dateTime).format('MMMM D, YYYY - h:mm A')}</div>
+                    ${isParent ? `<div class="col-md-3 text-center"> ${task.kidEmail}</div>` : ''}
+                    <div class="col-md-3 text-center">${task.taskName}</div>
+                    <div class="col-md-3 text-center">£${task.taskValue}</div>
+                    <div class="col-md-3 text-center"> ${dayjs(task.dateTime).format('MMMM D, YYYY - h:mm A')}</div>
                 </div>
             </li>
         `;

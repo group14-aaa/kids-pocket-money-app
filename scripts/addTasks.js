@@ -177,10 +177,10 @@ $(document).ready(function () {
         const taskInfo = `
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-md-3"><strong>Kid Email:</strong> ${task.kidEmail}</div>
-                        <div class="col-md-3"><strong>Task Name:</strong> ${task.taskName}</div>
-                        <div class="col-md-3"><strong>Task Value:</strong> £${task.taskValue}</div>
-                        <div class="col-md-3"><strong>Added Date:</strong> ${formattedDateTime}</div>
+                    <div class="col-md-3 text-center">${task.kidEmail}</div>
+                    <div class="col-md-3 text-center"> ${task.taskName}</div>
+                    <div class="col-md-3 text-center">£${task.taskValue}</div>
+                    <div class="col-md-3 text-center">${formattedDateTime}</div>
                     </div>
                 </li>
             `;
@@ -202,3 +202,5 @@ $(document).ready(function () {
   displayActiveTasksForParent()
 
 });
+
+
