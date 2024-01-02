@@ -1,23 +1,22 @@
 $(document).ready(function () {
+    // Load transaction history to the page
+    function loadTransactionHistoryToPage() {
+        const transactionHistory = getLocalStorageItem("transactionHistory", []);
+        const transactionHistoryContainer = $("#transaction-history-container");
+        transactionHistoryContainer.empty();
 
-  // Load transaction history to the page
-  function loadTransactionHistoryToPage() {
-      const transactionHistory = getLocalStorageItem("transactionHistory", []);
-      const transactionHistoryContainer = $("#transaction-history-container");
-      transactionHistoryContainer.empty();
+        const currentUser = getCurrentUser();
 
-      const currentUser = getCurrentUser();
+        transactionHistory.forEach(transaction => {
+            if (currentUser.email === transaction.parentEmail || currentUser.email === transaction.kidEmail) {
+                displayTransaction(transaction);
+            }
+        });
+    }
 
-      transactionHistory.forEach(transaction => {
-          if (currentUser.email === transaction.parentEmail || currentUser.email === transaction.kidEmail) {
-              displayTransaction(transaction);
-          }
-      });
-  }
-
-  // Display a transaction card
-  function displayTransaction(transaction) {
-      const cardTemplate = `
+    // Display a transaction card
+    function displayTransaction(transaction) {
+        const cardTemplate = `
           <div class="col-md-4">
               <div class="card mb-4">
                   <div class="card-body">
@@ -28,9 +27,9 @@ $(document).ready(function () {
                   </div>
               </div>
           </div>`;
-      $("#transaction-history-container").append(cardTemplate);
-  }
+        $("#transaction-history-container").append(cardTemplate);
+    }
 
-  // Load transaction history on document ready
-  loadTransactionHistoryToPage();
+    // Load transaction history on document ready
+    loadTransactionHistoryToPage();
 });
