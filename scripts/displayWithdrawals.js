@@ -9,6 +9,10 @@ $(document).ready(function () {
 
     parentWithdrawals.forEach(withdrawalId => {
       const withdrawalRequest = getLocalStorageItem(withdrawalId);
+
+      // Add acceptanceDate property to withdrawal request
+      withdrawalRequest.acceptanceDate = new Date().toISOString();
+
       displayWithdrawalRequest(withdrawalRequest);
     });
   }
@@ -52,8 +56,12 @@ $(document).ready(function () {
   // Move a withdrawal to transaction history
   function moveWithdrawalToTransactionHistory(withdrawalRequest) {
     const transactionHistory = getLocalStorageItem("transactionHistory", []);
+
+    // Add acceptanceDate property to withdrawal request in transaction history
+    withdrawalRequest.acceptanceDate = new Date().toISOString();
+
     transactionHistory.push(withdrawalRequest);
-    setLocalStorageItem("transactionHistory", transactionHistory)
+    setLocalStorageItem("transactionHistory", transactionHistory);
 
     // Remove from parent's withdrawals
     const parentEmail = getCurrentUser().email;
