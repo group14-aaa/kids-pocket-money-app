@@ -172,15 +172,15 @@ $(document).ready(function () {
 
       // Append sorted tasks to the container
       allTasks.forEach(task => {
-        const formattedDateTime = dayjs(task.date).format('MMMM D, YYYY - h:mm A');
+        const formattedDateTime = dayjs(task.date).format('MMMM D, YYYY');
 
         const taskInfo = `
                 <li class="list-group-item">
                     <div class="row">
-                        <div class="col-md-3"><strong>Kid Email:</strong> ${task.kidEmail}</div>
-                        <div class="col-md-3"><strong>Task Name:</strong> ${task.taskName}</div>
-                        <div class="col-md-3"><strong>Task Value:</strong> £${task.taskValue}</div>
-                        <div class="col-md-3"><strong>Added Date:</strong> ${formattedDateTime}</div>
+                    <div class="col-md-3 pt-2">${task.kidEmail}</div>
+                    <div class="col-md-3 pt-2"> ${task.taskName}</div>
+                    <div class="col-md-3 pt-2">£${task.taskValue}</div>
+                    <div class="col-md-3 pt-2">${formattedDateTime}</div>
                     </div>
                 </li>
             `;

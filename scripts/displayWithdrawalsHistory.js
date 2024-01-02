@@ -21,9 +21,9 @@ $(document).ready(function () {
               <div class="card mb-4">
                   <div class="card-body">
                       <h5 class="card-title">Transaction Details</h5>
-                      <p>Kid: ${transaction.kidEmail}</p>
+                      <p>${transaction.kidEmail}</p>
                       <p>Amount: £${transaction.amount.toFixed(2)}</p>
-                      <p>Status: ${transaction.status}</p>
+                      <p class="text-success">Status: ${transaction.status}</p>
                   </div>
               </div>
           </div>`;
