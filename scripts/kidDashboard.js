@@ -174,6 +174,10 @@ $(document).ready(function () {
 
         saveWithdrawalRequest(transactionId, withdrawalRequest);
         displayConfirmationMessage($("#confirmation-alert"), "Withdrawal request submitted!");
+
+        // Set isParent to false for kid's view
+        displayWithdrawalRequest(withdrawalRequest, false);
+
         $("#withdraw-form")[0].reset();
     }
 

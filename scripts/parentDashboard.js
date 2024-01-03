@@ -199,6 +199,6 @@ $(document).ready(function () {
     }
   }
 
-  displayActiveTasksForParent()
+  displayActiveTasksForParent();
 
 });

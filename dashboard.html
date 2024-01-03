@@ -4,6 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/x-icon" href="./assets/images/favicon.png" />
+
+    <!--Google fonts-->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap"
+      rel="stylesheet" />
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -39,7 +54,7 @@
                 <a class="nav-link" href="./">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="./dashboard.html">Tasks</a>
+                <a class="nav-link" href="./dashboard.html">Dashboard</a>
               </li>
               <li class="nav-item dropdown">
                 <a
@@ -56,24 +71,6 @@
                   <li><a class="dropdown-item" href="#">Month</a></li>
                 </ul>
               </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false">
-                  History
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Tasks</a></li>
-                  <li>
-                    <a class="dropdown-item" href="./transactionsHistory.html"
-                      >Withdrawals</a
-                    >
-                  </li>
-                </ul>
-              </li>
               <li class="nav-item header-balance">
                 <!-- Withdraw Modal button  -->
                 <button
@@ -81,7 +78,7 @@
                   class="btn btn-primary nav-balance nav-link"
                   data-bs-toggle="modal"
                   data-bs-target="#withdraw-modal">
-                  Balance: <span id="balance-value">0.00</span> £
+                  Balance: £ <span id="balance-value">0.00</span>
                 </button>
               </li>
               <li class="nav-item">
@@ -99,14 +96,6 @@
     <main class="content">
       <!-- PARENT START -->
       <div class="content-parent">
-        <!-- Display Withdrawal Requests -->
-        <div class="container mt-4">
-          <h2>Withdrawal Requests</h2>
-          <div class="row" id="withdrawal-request-container">
-            <!-- Withdrawal requests added here -->
-          </div>
-        </div>
-
         <!-- Display Add Task -->
         <div class="container text-center">
           <h2>Add New Task</h2>
@@ -120,6 +109,155 @@
             data-bs-target="#task-modal">
             Add new Task
           </button>
+        </div>
+
+        <div>
+          <div class="container-buttons-toggle mt-4">
+            <button
+              class="btn btn-primary toggle-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTaskCardContainerParent"
+              aria-expanded="false"
+              aria-controls="collapseTaskCardContainerParent">
+              Active Tasks
+            </button>
+
+            <button
+              class="btn btn-primary toggle-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTaskHistoryContainerParent"
+              aria-expanded="false"
+              aria-controls="collapseTaskHistoryContainerParent">
+              Tasks History
+            </button>
+
+            <button
+              class="btn btn-primary toggle-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseWithdrawalRequestsContainerParent"
+              aria-expanded="false"
+              aria-controls="collapseWithdrawalRequestsContainerParent">
+              Withdrawal Requests
+            </button>
+
+            <button
+              class="btn btn-primary toggle-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseWithdrawalHistoryContainerParent"
+              aria-expanded="false"
+              aria-controls="collapseWithdrawalHistoryContainerParent">
+              Withdrawal History
+            </button>
+
+            <button
+              class="btn btn-primary toggle-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target=".multi-collapse"
+              aria-expanded="false"
+              aria-controls="collapseTaskCardContainerParent collapseTaskHistoryContainerParent collapseWithdrawalRequestsContainerParent collapseWithdrawalHistoryContainerParent">
+              All
+            </button>
+          </div>
+
+          <!-- Display Active Task List -->
+          <div
+            class="collapse multi-collapse collapse-horizontal"
+            id="collapseTaskCardContainerParent">
+            <div class="container mt-4">
+              <h2>Kid's Active Task List</h2>
+              <div class="row" id="task-card-container-parent">
+                <!-- Active task cards added here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Display Tasks History List -->
+          <div
+            class="collapse multi-collapse collapse-horizontal"
+            id="collapseTaskHistoryContainerParent">
+            <div class="container mt-4">
+              <h2>Kid's Task History</h2>
+              <div class="row" id="task-history-container">
+                <!-- History Task cards added here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Display Withdrawal Requests -->
+          <div
+            class="collapse multi-collapse collapse-horizontal"
+            id="collapseWithdrawalRequestsContainerParent">
+            <div class="container mt-4">
+              <!-- Confirmation message -->
+              <div
+                class="alert text-success"
+                role="alert"
+                id="confirmation-alert-withdraw"
+                style="display: none"></div>
+
+              <div class="row" id="withdrawal-request-container">
+                <h2>Withdrawal Requests</h2>
+                <!-- Withdrawal requests added here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal for Withdrawal Confirmation -->
+          <div
+            class="modal fade"
+            id="confirmWithdrawalModal"
+            tabindex="-1"
+            aria-labelledby="confirmWithdrawalModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="confirmWithdrawalModalLabel">
+                    Confirm Withdrawal
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Are you sure you want to accept this withdrawal request?
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal">
+                    Close
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-success"
+                    id="confirmWithdrawalBtn">
+                    Confirm
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Display Withdrawal History -->
+          <div
+            class="collapse multi-collapse collapse-horizontal"
+            id="collapseWithdrawalHistoryContainerParent">
+            <div class="container mt-4">
+              <h2>Transaction History</h2>
+              <div class="row" id="transaction-history-container">
+                <!-- Transaction history added here -->
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- Modal to Add Task -->
@@ -192,47 +330,122 @@
             </div>
           </div>
         </div>
-
-        <!-- Task List -->
-        <div class="container mt-4">
-          <h2>Kid's Active Task List</h2>
-
-          <div class="row" id="task-card-container-parent">
-            <!-- Task cards added here -->
-          </div>
-        </div>
-        <div class="container mt-4">
-          <h2>Kid's Task History</h2>
-
-          <div class="row" id="task-history-container">
-            <!-- Task cards added here -->
-          </div>
-        </div>
       </div>
       <!-- PARENT END -->
 
       <!-- KID START-->
       <div class="content-kid">
-        <div class="text-center p-4">
+        <!-- <div class="text-center p-4">
           <h3 id="display-day"></h3>
+        </div> -->
+        <div class="container quote-bg text-center">
+          <div id="quote" class="fst-italic m-auto"></div>
         </div>
-        <div id="quote" class="fst-italic text-center m-8"></div>
 
-        <!-- Task to do section -->
-        <div class="container mt-4">
-          <h2>Tasks To Do List</h2>
+        <div>
+          <div class="container-buttons-toggle mt-4">
+            <button
+              class="btn btn-primary toggle-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTaskCardContainerParentKid"
+              aria-expanded="false"
+              aria-controls="collapseTaskCardContainerParentKid">
+              Tasks To Do
+            </button>
 
-          <div class="row" id="task-card-container">
-            <!-- Task cards added here -->
+            <button
+              class="btn btn-primary toggle-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseTaskHistoryContainerKid"
+              aria-expanded="false"
+              aria-controls="collapseTaskHistoryContainerKid">
+              Tasks History
+            </button>
+
+            <button
+              class="btn btn-primary toggle-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseWithdrawalRequestsContainerKid"
+              aria-expanded="false"
+              aria-controls="collapseWithdrawalRequestsContainerKid">
+              Withdrawal Requests
+            </button>
+
+            <button
+              class="btn btn-primary toggle-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#collapseWithdrawalHistoryContainerKid"
+              aria-expanded="false"
+              aria-controls="collapseWithdrawalHistoryContainerKid">
+              Withdrawal History
+            </button>
+
+            <button
+              class="btn btn-primary toggle-button"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target=".multi-collapse"
+              aria-expanded="false"
+              aria-controls="collapseTaskCardContainerParentKid collapseTaskHistoryContainerKid collapseWithdrawalRequestsContainerKid collapseWithdrawalHistoryContainerKid">
+              All
+            </button>
+          </div>
+
+          <!-- Display Active Task List -->
+          <div
+            class="collapse multi-collapse collapse-horizontal"
+            id="collapseTaskCardContainerParentKid">
+            <!-- Task to do section -->
+            <div class="container mt-4">
+              <h2>Tasks To Do</h2>
+
+              <div class="row" id="task-card-container">
+                <!-- Task cards added here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Display Tasks History List -->
+          <div
+            class="collapse multi-collapse collapse-horizontal"
+            id="collapseTaskHistoryContainerKid">
+            <div class="container mt-4">
+              <h2>Tasks History</h2>
+              <div class="row" id="task-history-container">
+                <!-- History Task cards added here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Display Withdrawal Requests -->
+          <div
+            class="collapse multi-collapse collapse-horizontal"
+            id="collapseWithdrawalRequestsContainerKid">
+            <div class="container mt-4">
+              <h2>Withdrawal Requests</h2>
+              <div class="row" id="withdrawal-request-container">
+                <!-- Withdrawal requests added here -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Display Withdrawal History -->
+          <div
+            class="collapse multi-collapse collapse-horizontal"
+            id="collapseWithdrawalHistoryContainerKid">
+            <div class="container mt-4">
+              <h2>Transaction History</h2>
+              <div class="row" id="transaction-history-container">
+                <!-- Transaction history added here -->
+              </div>
+            </div>
           </div>
         </div>
-        <div class="container mt-4">
-          <h2>Tasks History</h2>
 
-          <div class="row" id="task-history-container">
-            <!-- Task cards added here -->
-          </div>
-        </div>
         <!-- Confirm Task -->
         <div class="modal" id="confirmationModal" tabindex="-1" role="dialog">
           <div class="modal-dialog">
@@ -360,10 +573,11 @@
     <script src="./scripts/status.js"></script>
     <script src="./scripts/utils.js"></script>
     <script src="./scripts/api.js"></script>
+    <script src="./scripts/kidDashboard.js"></script>
+    <script src="./scripts/parentDashboard.js"></script>
+    <script src="./scripts/displayWithdrawalRequest.js"></script>
+    <script src="./scripts/displayWithdrawalHistory.js"></script>
     <script src="./scripts/displayTaskHistory.js"></script>
-    <script src="./scripts/kidWallet.js"></script>
-    <script src="./scripts/addTasks.js"></script>
-    <script src="./scripts/displayWithdrawals.js"></script>
     <script src="./scripts/main.js"></script>
   </body>
 </html>
