@@ -78,7 +78,7 @@
                   class="btn btn-primary nav-balance nav-link"
                   data-bs-toggle="modal"
                   data-bs-target="#withdraw-modal">
-                  Balance: £ <span id="balance-value">0.00</span>
+                  Balance: £<span id="balance-value">0.00</span>
                 </button>
               </li>
               <li class="nav-item">
@@ -170,9 +170,16 @@
             id="collapseTaskCardContainerParent">
             <div class="container mt-4">
               <h2>Kid's Active Task List</h2>
-              <div class="row" id="task-card-container-parent">
+              <table class="table">
+                <thead class="table-secondary">
+                  <th scope="col" colspan="2">Kid email</th>
+                  <th scope="col" colspan="2">Task Name</th>
+                  <th scope="col" colspan="2">Task Value</th>
+                  <th scope="col" colspan="2">Time completed</th>
+                </thead>
+                <tbody id="task-card-container-parent"></tbody>
                 <!-- Active task cards added here -->
-              </div>
+              </table>
             </div>
           </div>
 
@@ -182,9 +189,16 @@
             id="collapseTaskHistoryContainerParent">
             <div class="container mt-4">
               <h2>Kid's Task History</h2>
-              <div class="row" id="task-history-container">
+              <table class="table">
+                <thead class="table-secondary">
+                  <th scope="col" colspan="2">Kid email</th>
+                  <th scope="col" colspan="2">Task Name</th>
+                  <th scope="col" colspan="2">Task Value</th>
+                  <th scope="col" colspan="2">Time completed</th>
+                </thead>
+                <tbody id="task-kids-history-table"></tbody>
                 <!-- History Task cards added here -->
-              </div>
+              </table>
             </div>
           </div>
 
@@ -415,9 +429,14 @@
             id="collapseTaskHistoryContainerKid">
             <div class="container mt-4">
               <h2>Tasks History</h2>
-              <div class="row" id="task-history-container">
-                <!-- History Task cards added here -->
-              </div>
+              <table class="table">
+                <thead class="table-secondary">
+                  <th scope="col" colspan="2">Task Name</th>
+                  <th scope="col" colspan="2">Task Value</th>
+                  <th scope="col" colspan="2">Time completed</th>
+                </thead>
+                <tbody id="task-kids-history-table"></tbody>
+              </table>
             </div>
           </div>
 
@@ -446,7 +465,7 @@
           </div>
         </div>
 
-        <!-- Confirm Task -->
+        <!-- Confirm Task Modal -->
         <div class="modal" id="confirmationModal" tabindex="-1" role="dialog">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -476,7 +495,7 @@
           </div>
         </div>
 
-        <!-- Skip Task -->
+        <!-- Skip Task Modal -->
         <div class="modal" id="skipModal" tabindex="-1" role="dialog">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -505,6 +524,7 @@
             </div>
           </div>
         </div>
+
         <!-- Modal to Withdraw Funds -->
         <div class="modal" id="withdraw-modal" tabindex="-1" role="dialog">
           <div class="modal-dialog">

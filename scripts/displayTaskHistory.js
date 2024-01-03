@@ -1,6 +1,7 @@
 function displayTaskHistory() {
     const currentUser = getCurrentUser();
-    const taskHistoryContainer = $("#task-history-container");
+    const taskHistoryContainer = $("#task-history-table");
+    const kidsTaskHistoryContainer = $("#task-kids-history-table")
 
     // Clear previous task history
     taskHistoryContainer.empty();
@@ -48,19 +49,20 @@ function displayTaskHistory() {
     // Sort tasks by date and time in descending order
     allTasks.sort((a, b) => new Date(b.dateTime) - new Date(a.dateTime));
 
+
     // Append sorted tasks to the container
     allTasks.forEach(task => {
         const taskInfo = `
-            <li class="list-group-item">
-                <div class="row">
-                    ${isParent ? `<div class="col-md-3"><strong>Kid Email:</strong> ${task.kidEmail}</div>` : ''}
-                    <div class="col-md-3"><strong>Task Name:</strong> ${task.taskName}</div>
-                    <div class="col-md-3"><strong>Task Value:</strong> £${task.taskValue}</div>
-                    <div class="col-md-3"><strong>Finished Date:</strong> ${dayjs(task.dateTime).format('MMMM D, YYYY - h:mm A')}</div>
-                </div>
-            </li>
+            <tr class="table-success">
+                    ${isParent ? `<td colspan="2"> ${task.kidEmail}</td>` : ''}
+                    <td colspan="2"> ${task.taskName}</td>
+                    <td colspan="2"> £${task.taskValue}</td>
+                    <td colspan="2"> ${dayjs(task.dateTime).format('MMMM D, YYYY - h:mm A')}</td>
+            </tr>
         `;
         taskHistoryContainer.append(taskInfo);
+        kidsTaskHistoryContainer.append(taskInfo)
+
     });
 
     // Check if there are no tasks and display a message

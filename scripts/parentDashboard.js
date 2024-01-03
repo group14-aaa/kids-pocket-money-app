@@ -175,14 +175,12 @@ $(document).ready(function () {
         const formattedDateTime = dayjs(task.date).format('MMMM D, YYYY - h:mm A');
 
         const taskInfo = `
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-md-3"><strong>Kid Email:</strong> ${task.kidEmail}</div>
-                        <div class="col-md-3"><strong>Task Name:</strong> ${task.taskName}</div>
-                        <div class="col-md-3"><strong>Task Value:</strong> £${task.taskValue}</div>
-                        <div class="col-md-3"><strong>Added Date:</strong> ${formattedDateTime}</div>
-                    </div>
-                </li>
+                <tr class="table-info">
+                    <td colspan="2"> ${task.kidEmail}</td>
+                    <td colspan="2"> ${task.taskName}</td>
+                    <td colspan="2"> £${task.taskValue}</td>
+                    <td colspan="2"> ${formattedDateTime}</td>
+            </tr>
             `;
         taskContainerParent.append(taskInfo);
       });
