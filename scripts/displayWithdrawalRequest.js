@@ -13,16 +13,18 @@ function loadWithdrawalsToPage() {
     const kidWithdrawals = getLocalStorageItem(`withdrawals_${kidEmail}`, []);
 
     // Display message if no pending withdrawals
-    if (kidWithdrawals.every(withdrawalId => getLocalStorageItem(withdrawalId).status !== 'pending')) {
-      withdrawalContainer.append('<div class="col-12 text-center mt-3"><p>No pending withdrawals available</p></div>');
-    } else {
+    if (kidWithdrawals.some(withdrawalId => getLocalStorageItem(withdrawalId).status === 'pending')) {
+      // Display withdrawal requests
       kidWithdrawals.forEach(withdrawalId => {
         const withdrawalRequest = getLocalStorageItem(withdrawalId);
         if (withdrawalRequest.status === 'pending') {
           displayWithdrawalRequest(withdrawalRequest, isParent);
         }
       });
+    } else {
+      withdrawalContainer.append('<div class="col-12 text-center mt-3"><p>No pending withdrawals available</p></div>');
     }
+
   } else {
     // If it's a parent, load all withdrawal requests
     const parentEmail = currentUser.email;
