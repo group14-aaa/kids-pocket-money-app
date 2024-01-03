@@ -213,6 +213,7 @@ $(document).ready(function () {
             // Sort tasks in reverse order (newest first)
             tasks.sort((a, b) => new Date(b.date) - new Date(a.date));
 
+
             // Loop to create Bootstrap cards for each task
             tasks.forEach(function (task, i) {
                 const formattedDateTime = dayjs(task.date).format('MMMM D, YYYY h:mm A');
@@ -223,7 +224,7 @@ $(document).ready(function () {
                         <div class="card-body">
                             <h5 class="card-title">${task.name || 'N/A'}</h5>
                             <p class="card-text">${task.description || 'N/A'}</p>
-                            <p class="card-text">Value: £${task.value || 'N/A'}</p>
+                            <p class="card-text">Value: £${task.value.toFixed(2) || 'N/A'}</p>
                             <p class="card-text">Added Date: ${formattedDateTime}</p>
                             <button type="submit" class="btn btn-primary task-done-button" data-task-id="${task.id}">Done</button>
                             <button class="btn-secondary task-not-complete-btn">Skip</button>
