@@ -9,11 +9,20 @@
 /* Reset styles for body */
 body {
   margin: 0;
-  font-family: 'Arial', 'Helvetica', sans-serif;
+  font-family: 'Poppins', cursive, 'Arial', 'Helvetica', sans-serif;
   background-color: var(--bg-light);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+#quote {
+  font-size: 24px;
+  color: #007bff;
+}
+
+.quote-bg {
+  background-color: #f8f9fa!important;
 }
 
 /* Shared styles for forms and containers */
@@ -27,6 +36,17 @@ body {
 }
 
 .container {
+  max-width: 1300px;
+  margin: 40px auto;
+  background-color: var(--bg-light);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+}
+
+.container-buttons-toggle {
+  display: flex;
+  justify-content: space-around;
   max-width: 1300px;
   margin: 40px auto;
   background-color: var(--bg-light);

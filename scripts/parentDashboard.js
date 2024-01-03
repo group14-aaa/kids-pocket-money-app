@@ -175,14 +175,12 @@ $(document).ready(function () {
         const formattedDateTime = dayjs(task.date).format('MMMM D, YYYY - h:mm A');
 
         const taskInfo = `
-                <li class="list-group-item">
-                    <div class="row">
-                    <div class="col-md-3 text-center">${task.kidEmail}</div>
-                    <div class="col-md-3 text-center"> ${task.taskName}</div>
-                    <div class="col-md-3 text-center">£${task.taskValue}</div>
-                    <div class="col-md-3 text-center">${formattedDateTime}</div>
-                    </div>
-                </li>
+                <tr class="table-info">
+                    <td colspan="2"> ${task.kidEmail}</td>
+                    <td colspan="2"> ${task.taskName}</td>
+                    <td colspan="2"> £${task.taskValue}</td>
+                    <td colspan="2"> ${formattedDateTime}</td>
+            </tr>
             `;
         taskContainerParent.append(taskInfo);
       });
@@ -199,8 +197,6 @@ $(document).ready(function () {
     }
   }
 
-  displayActiveTasksForParent()
+  displayActiveTasksForParent();
 
 });
-
-

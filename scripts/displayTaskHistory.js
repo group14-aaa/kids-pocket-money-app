@@ -54,17 +54,12 @@ function displayTaskHistory() {
     allTasks.forEach(task => {
         const taskInfo = `
             <tr class="table-success">
-                    ${isParent ? `<td> ${task.kidEmail}</td>` : ''}
-                    <td> ${task.taskName}</td>
-                    <td> £${task.taskValue}</td>
-                    <td> ${dayjs(task.dateTime).format('MMMM D, YYYY - h:mm A')}</td>
+                    ${isParent ? `<td colspan="2"> ${task.kidEmail}</td>` : ''}
+                    <td colspan="2"> ${task.taskName}</td>
+                    <td colspan="2"> £${task.taskValue}</td>
+                    <td colspan="2"> ${dayjs(task.dateTime).format('MMMM D, YYYY - h:mm A')}</td>
             </tr>
-           
         `;
-
-
-        
-    
         taskHistoryContainer.append(taskInfo);
         kidsTaskHistoryContainer.append(taskInfo)
 

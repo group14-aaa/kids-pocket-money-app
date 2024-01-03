@@ -51,7 +51,7 @@ function displayErrorMessage(modalId, message) {
     errorMessageElement.text(message);
 
     // Hide the error message after a few seconds
-    setTimeout(() => errorMessageElement.text(''), 3000);
+    setTimeout(() => errorMessageElement.text(''), 2000);
 }
 
 // Display confirmation messages
@@ -59,7 +59,7 @@ function displayConfirmationMessage(alertElement, message) {
     alertElement.text(message).show();
 
     // Hide the confirmation message after a few seconds
-    setTimeout(() => alertElement.hide(), 5000);
+    setTimeout(() => alertElement.hide(), 2000);
 }
 
 // Displaying the date
