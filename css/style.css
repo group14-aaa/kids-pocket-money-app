@@ -1,6 +1,6 @@
 /* style.css */
 :root {
-  --primary-color: #4CAF50; /* Green color */
+  --primary-color: #4caf50; /* Green color */
   --secondary-color: #ff6f61; /* Coral color */
   --bg-light: #f8f9fa; /* Light white */
   --bg-darkgrey: #333; /* Light gray*/
@@ -9,7 +9,7 @@
 /* Reset styles for body */
 body {
   margin: 0;
-  font-family: 'Poppins', cursive, 'Arial', 'Helvetica', sans-serif;
+  font-family: "Poppins", cursive, "Arial", "Helvetica", sans-serif;
   background-color: var(--bg-light);
   display: flex;
   flex-direction: column;
@@ -17,12 +17,18 @@ body {
 }
 
 #quote {
-  font-size: 24px;
+  font-size: 1.2rem;
   color: #007bff;
 }
 
 .quote-bg {
-  background-color: #f8f9fa!important;
+  background-color: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+  #quote {
+    font-size: 0.8rem;
+  }
 }
 
 /* Shared styles for forms and containers */
@@ -107,19 +113,22 @@ body {
   margin-bottom: 30px;
 }
 
-.feature-list, .benefit-list {
+.feature-list,
+.benefit-list {
   list-style-type: none;
   padding-left: 0;
 }
 
-.feature-list li, .benefit-list li {
+.feature-list li,
+.benefit-list li {
   font-size: 18px;
   margin-bottom: 15px;
   position: relative;
   padding-left: 35px;
 }
 
-.feature-list li i, .benefit-list li i {
+.feature-list li i,
+.benefit-list li i {
   position: absolute;
   left: 0;
   top: 50%;
@@ -129,7 +138,9 @@ body {
 }
 
 /* Text styles */
-p, h2, h3 {
+p,
+h2,
+h3 {
   color: #495057;
 }
 
@@ -180,7 +191,8 @@ p, h2, h3 {
   color: #f1f1f1;
 }
 
-.navbar-nav .nav-link, .nav-balance {
+.navbar-nav .nav-link,
+.nav-balance {
   padding: 10px;
   margin: 5px;
   color: #fff !important;
@@ -190,7 +202,8 @@ p, h2, h3 {
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-.navbar-nav .nav-link:hover, .nav-balance:hover {
+.navbar-nav .nav-link:hover,
+.nav-balance:hover {
   background-color: var(--secondary-color);
   color: #fff !important;
 }
