@@ -59,7 +59,9 @@ function displayTaskHistory() {
                     <td colspan="2"> £${task.taskValue}</td>
                     <td colspan="2"> ${dayjs(task.dateTime).format('MMMM D, YYYY - h:mm A')}</td>
             </tr>
+
         `;
+
         taskHistoryContainer.append(taskInfo);
         kidsTaskHistoryContainer.append(taskInfo)
 

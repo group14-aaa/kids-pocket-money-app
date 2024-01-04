@@ -112,56 +112,56 @@
         </div>
 
         <div>
-          <div class="container-buttons-toggle mt-4">
-            <button
-              class="btn btn-primary toggle-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseTaskCardContainerParent"
-              aria-expanded="false"
-              aria-controls="collapseTaskCardContainerParent">
-              Active Tasks
-            </button>
+          <div class="container text-center mt-4">
+            <div class="row">
+              <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                <button
+                  class="btn btn-primary toggle-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTaskCardContainerParent"
+                  aria-expanded="false"
+                  aria-controls="collapseTaskCardContainerParent">
+                  Active Tasks
+                </button>
+              </div>
 
-            <button
-              class="btn btn-primary toggle-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseTaskHistoryContainerParent"
-              aria-expanded="false"
-              aria-controls="collapseTaskHistoryContainerParent">
-              Tasks History
-            </button>
+              <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                <button
+                  class="btn btn-primary toggle-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTaskHistoryContainerParent"
+                  aria-expanded="false"
+                  aria-controls="collapseTaskHistoryContainerParent">
+                  Tasks History
+                </button>
+              </div>
 
-            <button
-              class="btn btn-primary toggle-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseWithdrawalRequestsContainerParent"
-              aria-expanded="false"
-              aria-controls="collapseWithdrawalRequestsContainerParent">
-              Withdrawal Requests
-            </button>
+              <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                <button
+                  class="btn btn-primary toggle-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseWithdrawalRequestsContainerParent"
+                  aria-expanded="false"
+                  aria-controls="collapseWithdrawalRequestsContainerParent">
+                  Withdrawal Requests
+                </button>
+              </div>
 
-            <button
-              class="btn btn-primary toggle-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseWithdrawalHistoryContainerParent"
-              aria-expanded="false"
-              aria-controls="collapseWithdrawalHistoryContainerParent">
-              Withdrawal History
-            </button>
-
-            <button
-              class="btn btn-primary toggle-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target=".multi-collapse"
-              aria-expanded="false"
-              aria-controls="collapseTaskCardContainerParent collapseTaskHistoryContainerParent collapseWithdrawalRequestsContainerParent collapseWithdrawalHistoryContainerParent">
-              All
-            </button>
+              <div class="col-sm-6 col-md-4 col-lg-3 mb-3">
+                <button
+                  class="btn btn-primary toggle-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseWithdrawalHistoryContainerParent"
+                  aria-expanded="false"
+                  aria-controls="collapseWithdrawalHistoryContainerParent">
+                  Withdrawal History
+                </button>
+              </div>
+            </div>
           </div>
 
           <!-- Display Active Task List -->
@@ -170,16 +170,23 @@
             id="collapseTaskCardContainerParent">
             <div class="container mt-4">
               <h2>Kid's Active Task List</h2>
-              <table class="table">
-                <thead class="table-secondary">
-                  <th scope="col" colspan="2">Kid email</th>
-                  <th scope="col" colspan="2">Task Name</th>
-                  <th scope="col" colspan="2">Task Value</th>
-                  <th scope="col" colspan="2">Time completed</th>
-                </thead>
-                <tbody id="task-card-container-parent"></tbody>
-                <!-- Active task cards added here -->
-              </table>
+              <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered">
+                  <thead class="table-secondary table-dark">
+                    <tr>
+                      <th scope="col" colspan="2">Kid email</th>
+                      <th scope="col" colspan="2">Task Name</th>
+                      <th scope="col" colspan="2">Task Value</th>
+                      <th scope="col" colspan="2">Added Date & Time</th>
+                    </tr>
+                  </thead>
+                  <tbody
+                    id="task-card-container-parent"
+                    class="table-group-divider">
+                    <!-- Active task cards added here -->
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
 
@@ -189,16 +196,21 @@
             id="collapseTaskHistoryContainerParent">
             <div class="container mt-4">
               <h2>Kid's Task History</h2>
-              <table class="table">
-                <thead class="table-secondary">
-                  <th scope="col" colspan="2">Kid email</th>
-                  <th scope="col" colspan="2">Task Name</th>
-                  <th scope="col" colspan="2">Task Value</th>
-                  <th scope="col" colspan="2">Time completed</th>
-                </thead>
-                <tbody id="task-kids-history-table"></tbody>
-                <!-- History Task cards added here -->
-              </table>
+              <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered">
+                  <thead class="table-secondary table-dark">
+                    <tr>
+                      <th scope="col" colspan="2">Kid email</th>
+                      <th scope="col" colspan="2">Task Name</th>
+                      <th scope="col" colspan="2">Task Value</th>
+                      <th scope="col" colspan="2">Completed Date & Time</th>
+                    </tr>
+                  </thead>
+                  <tbody id="task-history-table" class="table-group-divider">
+                    <!-- History Task cards added here -->
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
 
@@ -207,6 +219,7 @@
             class="collapse multi-collapse collapse-horizontal"
             id="collapseWithdrawalRequestsContainerParent">
             <div class="container mt-4">
+              <h2>Withdrawal Requests</h2>
               <!-- Confirmation message -->
               <div
                 class="alert text-success"
@@ -215,7 +228,6 @@
                 style="display: none"></div>
 
               <div class="row" id="withdrawal-request-container">
-                <h2>Withdrawal Requests</h2>
                 <!-- Withdrawal requests added here -->
               </div>
             </div>
@@ -357,56 +369,56 @@
         </div>
 
         <div>
-          <div class="container-buttons-toggle mt-4">
-            <button
-              class="btn btn-primary toggle-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseTaskCardContainerParentKid"
-              aria-expanded="false"
-              aria-controls="collapseTaskCardContainerParentKid">
-              Tasks To Do
-            </button>
+          <div class="container text-center mt-4">
+            <div class="row">
+              <div class="col-md-6 col-lg-3 mb-3">
+                <button
+                  class="btn btn-primary toggle-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTaskCardContainerParentKid"
+                  aria-expanded="false"
+                  aria-controls="collapseTaskCardContainerParentKid">
+                  Tasks To Do
+                </button>
+              </div>
 
-            <button
-              class="btn btn-primary toggle-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseTaskHistoryContainerKid"
-              aria-expanded="false"
-              aria-controls="collapseTaskHistoryContainerKid">
-              Tasks History
-            </button>
+              <div class="col-md-6 col-lg-3 mb-3">
+                <button
+                  class="btn btn-primary toggle-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseTaskHistoryContainerKid"
+                  aria-expanded="false"
+                  aria-controls="collapseTaskHistoryContainerKid">
+                  Tasks History
+                </button>
+              </div>
 
-            <button
-              class="btn btn-primary toggle-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseWithdrawalRequestsContainerKid"
-              aria-expanded="false"
-              aria-controls="collapseWithdrawalRequestsContainerKid">
-              Withdrawal Requests
-            </button>
+              <div class="col-md-6 col-lg-3 mb-3">
+                <button
+                  class="btn btn-primary toggle-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseWithdrawalRequestsContainerKid"
+                  aria-expanded="false"
+                  aria-controls="collapseWithdrawalRequestsContainerKid">
+                  Withdrawal Requests
+                </button>
+              </div>
 
-            <button
-              class="btn btn-primary toggle-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#collapseWithdrawalHistoryContainerKid"
-              aria-expanded="false"
-              aria-controls="collapseWithdrawalHistoryContainerKid">
-              Withdrawal History
-            </button>
-
-            <button
-              class="btn btn-primary toggle-button"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target=".multi-collapse"
-              aria-expanded="false"
-              aria-controls="collapseTaskCardContainerParentKid collapseTaskHistoryContainerKid collapseWithdrawalRequestsContainerKid collapseWithdrawalHistoryContainerKid">
-              All
-            </button>
+              <div class="col-md-6 col-lg-3 mb-3">
+                <button
+                  class="btn btn-primary toggle-button"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseWithdrawalHistoryContainerKid"
+                  aria-expanded="false"
+                  aria-controls="collapseWithdrawalHistoryContainerKid">
+                  Withdrawal History
+                </button>
+              </div>
+            </div>
           </div>
 
           <!-- Display Active Task List -->
@@ -429,14 +441,18 @@
             id="collapseTaskHistoryContainerKid">
             <div class="container mt-4">
               <h2>Tasks History</h2>
-              <table class="table">
-                <thead class="table-secondary">
-                  <th scope="col" colspan="2">Task Name</th>
-                  <th scope="col" colspan="2">Task Value</th>
-                  <th scope="col" colspan="2">Time completed</th>
-                </thead>
-                <tbody id="task-kids-history-table"></tbody>
-              </table>
+              <div class="table-responsive">
+                <table class="table table-striped table-hover table-bordered">
+                  <thead class="table-dark">
+                    <th scope="col" colspan="2">Task Name</th>
+                    <th scope="col" colspan="2">Task Value</th>
+                    <th scope="col" colspan="2">Completed Date & Time</th>
+                  </thead>
+                  <tbody
+                    id="task-kids-history-table"
+                    class="table-group-divider"></tbody>
+                </table>
+              </div>
             </div>
           </div>
 
