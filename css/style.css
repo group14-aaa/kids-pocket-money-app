@@ -16,6 +16,12 @@ body {
   min-height: 100vh;
 }
 
+.logo {
+  width:40px;
+  padding-right:5px;
+  padding-bottom: 5px;
+}
+
 #quote {
   font-size: 1.2rem;
   color: #007bff;
