@@ -112,7 +112,6 @@ $(document).ready(function () {
         setLocalStorageItem(`taskHistory_${kidEmail}`, userTaskHistory);
     }
 
-
     function skipTask(card) {
         const taskId = card.find(".task-done-button").data("task-id");
         const remainingAssignedKids = updateAssignedKids(taskId);
