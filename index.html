@@ -31,7 +31,10 @@
       <!-- Navigation -->
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-xxl">
-          <a class="navbar-brand m-2 ms-5" href="./"><img src="./assets/images/favicon.png" class="img-fluid logo">Kids Pocket Money</a>
+          <a class="navbar-brand m-2 ms-5" href="./">
+            <img src="./assets/images/favicon.png" class="img-fluid logo" />Kids
+            Pocket Money</a
+          >
           <!-- Toggle button for mobile -->
           <button
             class="navbar-toggler"
@@ -48,6 +51,15 @@
             class="collapse navbar-collapse justify-content-end align-center"
             id="main-nav">
             <ul class="navbar-nav">
+              <li class="nav-item">
+                <button
+                  type="button"
+                  class="btn btn-primary nav-link"
+                  data-bs-toggle="modal"
+                  data-bs-target="#demoInfo">
+                  Click here for Demo Login Info
+                </button>
+              </li>
               <li><a class="nav-link active" href="./">Home</a></li>
               <li class="nav-item">
                 <button
@@ -239,7 +251,6 @@
                 <li>Phone: (123) 456-7890</li>
                 <li>Address: London</li>
               </ul>
-
             </div>
             <div class="col-md-6">
               <!-- Contact Form -->
@@ -297,6 +308,65 @@
           </div>
         </div>
       </section>
+
+      <!-- Modal for Demo Login Info  -->
+      <div class="modal" id="demoInfo" tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content m-0 p-0">
+            <div class="container m-0">
+              <h2>Demo Login Info</h2>
+
+              <p class="lead">
+                Use the provided login information below to access the demo
+                accounts:
+              </p>
+
+              <div class="card my-3">
+                <div class="card-body">
+                  <h5 class="card-title">Parent Login:</h5>
+                  <ul class="list-unstyled">
+                    <li>Email: parent@gmail.com</li>
+                    <li>Password: parent</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="card my-3">
+                <div class="card-body">
+                  <h5 class="card-title">Kid 1 Login:</h5>
+                  <ul class="list-unstyled">
+                    <li>Email: kid1@gmail.com</li>
+                    <li>Password: kid1</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="card my-3">
+                <div class="card-body">
+                  <h5 class="card-title">Kid 2 Login:</h5>
+                  <ul class="list-unstyled">
+                    <li>Email: kid2@gmail.com</li>
+                    <li>Password: kid2</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <p class="lead">
+                  Feel free to create tasks, complete them, explore the task
+                  history and withdraw.
+                </p>
+                <!-- Close Button -->
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal">
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <!-- Modal to Login  -->
       <div class="modal" id="login" tabindex="-1" role="dialog">
