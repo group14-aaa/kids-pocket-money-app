@@ -1,23 +1,34 @@
 $(document).ready(function () {
-    // Display Date
-    // displayDate();
+  // Display Date
+  // displayDate();
 
-    // Update UI
-    updateUIBasedOnLoginStatus();
+  // Check if seed data is already set, if not, set it
+  if (!getLocalStorageItem('users')) {
+    setSeedUserData();
+  }
 
-    // Add an event listener to handle the collapse events
-    $('.toggle-button').on('click', function () {
-        const targetCollapseId = $(this).data('target');
-        const allCollapses = $('.multi-collapse');
+  // Check if seed tasks for kids are already set, if not, set them
+  if (!getLocalStorageItem('taskSeedSet')) {
+    setSeedTasksForKids();
+    setLocalStorageItem('taskSeedSet', true);
+  }
 
-        // Hide all collapses
-        allCollapses.each(function () {
-          if ($(this).attr('id') !== targetCollapseId) {
-            $(this).collapse('hide');
-          }
-        });
-      });
+  // Update UI
+  updateUIBasedOnLoginStatus();
 
-    // Log out button
-    $('#logoutBtn').on('click', handleLogout);
+  // Add an event listener to handle the collapse events
+  $('.toggle-button').on('click', function () {
+    const targetCollapseId = $(this).data('target');
+    const allCollapses = $('.multi-collapse');
+
+    // Hide all collapses
+    allCollapses.each(function () {
+      if ($(this).attr('id') !== targetCollapseId) {
+        $(this).collapse('hide');
+      }
+    });
+  });
+
+  // Log out button
+  $('#logoutBtn').on('click', handleLogout);
 });
