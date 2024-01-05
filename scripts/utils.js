@@ -30,7 +30,7 @@ function displayUserSpecificContent(userType) {
 // Display UI elements based on Login Status
 function updateUIBasedOnLoginStatus() {
     const isLoggedIn = getLocalStorageItem('isLoggedIn', false);
-    const buttons = ['.navbar-nav button[data-bs-target="#login"]', '.navbar-nav button[data-bs-target="#register"]', '#hero-intro button[data-bs-target="#register"]'];
+    const buttons = ['.navbar-nav button[data-bs-target="#demoInfo"]', '.navbar-nav button[data-bs-target="#login"]', '.navbar-nav button[data-bs-target="#register"]', '#hero-intro button[data-bs-target="#register"]'];
 
     // Show or hide elements based on login status
     buttons.forEach(button => $(button).toggle(!isLoggedIn));
