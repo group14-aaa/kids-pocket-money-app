@@ -13,6 +13,13 @@ $(document).ready(function () {
     setLocalStorageItem('taskSeedSet', true);
   }
 
+  // Check if seed tasks for kids are already set, if not, set them
+  if (!getLocalStorageItem('balanceSeedSet')) {
+    setSeedBalanceForKids();
+    setLocalStorageItem('balanceSeedSet', true);
+  }
+
+
   // Update UI
   updateUIBasedOnLoginStatus();
 
