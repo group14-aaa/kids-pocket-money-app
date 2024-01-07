@@ -13,17 +13,22 @@ $(document).ready(function () {
     setLocalStorageItem('taskSeedSet', true);
   }
 
-  // Check if seed tasks for kids are already set, if not, set them
+  // Check if seed balances for kids are already set, if not, set them
   if (!getLocalStorageItem('balanceSeedSet')) {
     setSeedBalanceForKids();
     setLocalStorageItem('balanceSeedSet', true);
   }
 
+  // Check if seed withdrawals are already set, if not, set them
+  if (!getLocalStorageItem('withdrawSeedSet')) {
+    setSeedWithdrawTransaction();
+    setLocalStorageItem('withdrawSeedSet', true);
+  }
 
   // Update UI
   updateUIBasedOnLoginStatus();
 
-  // Add an event listener to handle the collapse events
+  // Event listener to handle the collapse events in dashboard
   $('.toggle-button').on('click', function () {
     const targetCollapseId = $(this).data('target');
     const allCollapses = $('.multi-collapse');

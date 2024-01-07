@@ -216,9 +216,75 @@ function setSeedTasksForKids() {
 // Set seed balance for kids
 function setSeedBalanceForKids() {
     const kidsEmail = [
-        { email: 'kid1@gmail.com' },
-        { email: 'kid2@gmail.com' }
+        { email: 'kid1@gmail.com', balance: 6 },
+        { email: 'kid2@gmail.com', balance: 2.5 },
     ];
 
-    kidsEmail.forEach(kid => setLocalStorageItem(`balanceTotal_${kid.email}`, 33));
+    kidsEmail.forEach(kid => {
+        localStorage.setItem(`balanceTotal_${kid.email}`, kid.balance);
+    });
+}
+
+// Set seed transactions for kids and parent
+function setSeedWithdrawTransaction() {
+    // Initialize counters for unique transaction IDs
+    let transactionIdCounterKid1 = 1;
+    let transactionIdCounterKid2 = 5;
+
+    // Create a transaction object
+    function createTransaction(id, kidEmail, parentEmail, amount, status) {
+        const currentDate = new Date().toISOString();
+        return {
+            id: `transaction-seed-${id}`,
+            date: currentDate,
+            kidEmail: kidEmail,
+            parentEmail: parentEmail,
+            amount: amount,
+            status: status,
+            acceptanceDate: status === 'Accepted' ? new Date().toISOString() : null
+        };
+    }
+
+    // Initialize transactions for kid1@gmail.com
+    const transactionsKid1 = [
+        createTransaction(transactionIdCounterKid1++, 'kid1@gmail.com', 'parent@gmail.com', 3, 'pending'),
+        createTransaction(transactionIdCounterKid1++, 'kid1@gmail.com', 'parent@gmail.com', 2, 'pending'),
+        createTransaction(transactionIdCounterKid1++, 'kid1@gmail.com', 'parent@gmail.com', 5.5, 'Accepted'),
+        createTransaction(transactionIdCounterKid1++, 'kid1@gmail.com', 'parent@gmail.com', 5, 'Accepted')
+    ];
+
+    // Initialize transactions for kid2@gmail.com
+    const transactionsKid2 = [
+        createTransaction(transactionIdCounterKid2++, 'kid2@gmail.com', 'parent@gmail.com', 2, 'pending'),
+        createTransaction(transactionIdCounterKid2++, 'kid2@gmail.com', 'parent@gmail.com', 2, 'pending'),
+        createTransaction(transactionIdCounterKid2++, 'kid2@gmail.com', 'parent@gmail.com', 5, 'Accepted')
+    ];
+
+    // Set transactions and transaction history in localStorage
+    transactionsKid1.forEach(transaction => {
+        setLocalStorageItem(transaction.id, transaction);
+    });
+
+    transactionsKid2.forEach(transaction => {
+        setLocalStorageItem(transaction.id, transaction);
+    });
+
+    // Create transaction history array for all accepted transactions
+    const transactionHistory = transactionsKid1.concat(transactionsKid2).filter(transaction => transaction.status === 'Accepted');
+
+    // Set transaction history in localStorage
+    setLocalStorageItem('transactionHistory', transactionHistory);
+
+    // Set withdrawal lists in localStorage
+    setLocalStorageItem('withdrawals_kid1@gmail.com', [
+        'transaction-seed-1', 'transaction-seed-2', 'transaction-seed-3', 'transaction-seed-4'
+    ]);
+
+    setLocalStorageItem('withdrawals_kid2@gmail.com', [
+        'transaction-seed-5', 'transaction-seed-6', 'transaction-seed-7'
+    ]);
+
+    setLocalStorageItem('withdrawals_parent@gmail.com', [
+        'transaction-seed-1', 'transaction-seed-2', 'transaction-seed-5', 'transaction-seed-6'
+    ]);
 }
